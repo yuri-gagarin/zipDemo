@@ -2,28 +2,13 @@ import React, { Component } from "react";
 import { View, Text, StyleSheet, SafeAreaView } from "react-native";
 
 // Component Imports //
-import IndexComponent from "./components/index/IndexComponent";
+import LoginComponent from "./src/components/auth/LoginComponent";
+
+// redux imports //
+import { Provider } from "react-redux";
+import store from "./src/redux/store";
 
 // Main app Page //
-
-const styles =  StyleSheet.create({
-  container: {
-    borderWidth: 3,
-    borderColor: "red",
-    height: "100%"
-  },
-  titleView: {
-    borderWidth: 2,
-    borderColor: "green",
-    width: "100%",
-    height: 50,
-    marginTop: 100,
-    textAlign: "center"
-  },
-  loginButton: {
-    
-  }
-})
 
 export default class App extends Component {
 
@@ -34,12 +19,9 @@ export default class App extends Component {
 
   render() {
     return (
-      <SafeAreaView style = {styles.container}>
-        <View style = {styles.titleView}>
-          <Text style = { { color: "green", textAlign: "center"} }>Hello There</Text>
-        </View>
-        <IndexComponent />
-      </SafeAreaView>
+      <Provider store={store}>
+        <LoginComponent />
+      </Provider>
     );
   }
 };
