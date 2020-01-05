@@ -1,0 +1,1 @@
+export const mainLogoImg = require("./auth_screen/logo_main.jpg");

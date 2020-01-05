@@ -1,26 +1,67 @@
-import React from "react";
-import { SafeAreaView, Text, TouchableOpacity, TextInput } from "react-native";
-
-import styles from "./styles/styles";
+import React, { useState } from "react";
+import { SafeAreaView, View, Text, TouchableOpacity, TextInput, Image } from "react-native";
+// Additional Components //
+import PasswordToggle from "./PasswordToggle";
+// Styles and Images //
+import { loginStyles } from "./styles/styles";
+import { mainLogoImg } from "../../images/imageIndex";
 
 const LoginComponent = (props) => {
 
+  const initialState = {
+    email: "",
+    password: "",
+    passwordHidden: true
+  };
+  const [loginState, updateState] = useState(initialState);
+
+  const updateEmail = (text) => {
+    updateState({
+      ...loginState,
+      email: text
+    });
+  };
+  const updatePassword = (text) => {
+    updateState({
+      ...loginState,
+      password: text
+    });
+  };
+  const renderShowButton = () => {
+    const { password } = loginState;
+    return password ? true : false;
+  };
+  const togglePassVisibility = () => {
+    updateState({
+      ...loginState,
+      passwordHidden: !loginState.passwordHidden
+    });
+  };
+
   return (
-    <SafeAreaView style={styles.loginView}>
-      <Text style={styles.title}>Login</Text>
-      <Text style={styles.emailLabel}>Email</Text>
+    <SafeAreaView style={loginStyles.loginView}>
+      <Image source={mainLogoImg} style={loginStyles.logo}></Image>
+      <Text style={loginStyles.title}>Login</Text>
+      <Text style={loginStyles.emailLabel}>Email</Text>
       <TextInput 
-        style={styles.emailInput}
+        style={loginStyles.emailInput}
+        onChangeText={ (text) => updateEmail(text) }
       />
-      <Text style={styles.passwordLabel}>Password</Text>
+      <Text style={loginStyles.passwordLabel}>Password</Text>
+      <PasswordToggle
+        displayed={renderShowButton()}
+        togglePassVisibility={togglePassVisibility}
+      />
       <TextInput 
-        style={styles.passwordInput}
+        style={loginStyles.passwordInput}
+        onChangeText={ (text) => updatePassword(text) }
+        secureTextEntry={loginState.passwordHidden}
       />
-      <TouchableOpacity style={styles.forgotLogin}>
-        <Text>Forgot Login or Password?</Text>
+      <TouchableOpacity style = {loginStyles.loginButton}>
+        <Text style={loginStyles.loginButtonText}>Login</Text>
       </TouchableOpacity>
-      <TouchableOpacity style = {styles.loginButton}>
-        <Text style={styles.loginButtonText}>Login</Text>
+      <TouchableOpacity style={loginStyles.forgotLogin}>
+        <Text>Forgot Login or Password?</Text>
       </TouchableOpacity>
     </SafeAreaView>
   );
