@@ -1,5 +1,6 @@
 import React from "react";
 import { TouchableOpacity, Text } from "react-native";
+import PropTypes from "prop-types";
 
 import { passwordToggleStyle } from "./styles/styles";
 
@@ -17,6 +18,11 @@ const PasswordToggle = ({displayed, togglePassVisibility}) => {
   } else {
     return null;
   }
+};
+
+PasswordToggle.propTypes = {
+  displayed: PropTypes.bool.isRequired,
+  togglePassVisibility: PropTypes.func.isRequired
 };
 
 export default PasswordToggle;
