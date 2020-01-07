@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { SafeAreaView, Text, TextInput, TouchableOpacity } from "react-native";
+import { View, Text, TextInput, TouchableOpacity } from "react-native";
 // additional Components //
 import PasswordToggle from "./PasswordToggle";
 // Style imports and images //
@@ -37,7 +37,7 @@ const RegistrationComponent = (props) => {
   };
 
   return (
-    <SafeAreaView style={registrationStyles.registrationView}>
+    <View style={registrationStyles.registrationView}>
       <Image source={mainLogoImg} style={registrationStyles.logo}></Image>
       <Text style={registrationStyles.title}>Register</Text>
       <Text style={registrationStyles.emailLabel}>Email</Text>
@@ -65,7 +65,7 @@ const RegistrationComponent = (props) => {
         onChangeText={ (text) => updateEmailConfirm(text) }
       />
 
-    </SafeAreaView>
+    </View>
   )
 };
 

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { SafeAreaView, View, Text, TouchableOpacity, TextInput, Image } from "react-native";
+import { View, Text, TouchableOpacity, TextInput, Image } from "react-native";
 // Additional Components //
 import PasswordToggle from "./PasswordToggle";
 // Styles and Images //
@@ -37,9 +37,12 @@ const LoginComponent = (props) => {
       passwordHidden: !loginState.passwordHidden
     });
   };
+  const goToRegistration = () => {
+
+  };
 
   return (
-    <SafeAreaView style={loginStyles.loginView}>
+    <View style={loginStyles.loginView}>
       <Image source={mainLogoImg} style={loginStyles.logo}></Image>
       <Text style={loginStyles.title}>Login</Text>
       <Text style={loginStyles.emailLabel}>Email</Text>
@@ -60,10 +63,13 @@ const LoginComponent = (props) => {
       <TouchableOpacity style = {loginStyles.loginButton}>
         <Text style={loginStyles.loginButtonText}>Login</Text>
       </TouchableOpacity>
-      <TouchableOpacity style={loginStyles.forgotLogin}>
+      <TouchableOpacity 
+        style={loginStyles.forgotLogin}
+        onPress={goToRegistration}
+      >
         <Text>Forgot Login or Password?</Text>
       </TouchableOpacity>
-    </SafeAreaView>
+    </View>
   );
 };
 
