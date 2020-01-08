@@ -73,5 +73,9 @@ const LoginComponent = (props) => {
   );
 };
 
+LoginComponent.navigationOptions = {
+  title: "Main Login"
+};
+
 
 export default LoginComponent;

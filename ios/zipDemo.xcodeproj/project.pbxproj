@@ -18,6 +18,7 @@
 		2DCD954D1E0B4F2C00145EB5 /* zipDemoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* zipDemoTests.m */; };
 		43F1197A28A43BF0A9BD3415 /* libPods-zipDemo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E0BE834C01ABACEB78823FB /* libPods-zipDemo.a */; };
 		86F8C89E609179EA2B5B952E /* libPods-zipDemo-tvOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E3B26E58AAE8F8724857CFA2 /* libPods-zipDemo-tvOS.a */; };
+		9620A45B23C5F1FA002F7800 /* main.jsbundle in Resources */ = {isa = PBXBuildFile; fileRef = 9620A45A23C5F1FA002F7800 /* main.jsbundle */; };
 		D10A0106358D8573E69F75BA /* libPods-zipDemoTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E824A76E0E3B4306B873D70E /* libPods-zipDemoTests.a */; };
 		E3ACFDBAD1F8E717879CB90E /* libPods-zipDemo-tvOSTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1A7156AC1D4341FC8E1C9215 /* libPods-zipDemo-tvOSTests.a */; };
 /* End PBXBuildFile section */
@@ -40,7 +41,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		008F07F21AC5B25A0029DE68 /* main.jsbundle */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = main.jsbundle; sourceTree = "<group>"; };
 		00E356EE1AD99517003FC87E /* zipDemoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = zipDemoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		00E356F11AD99517003FC87E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		00E356F21AD99517003FC87E /* zipDemoTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = zipDemoTests.m; sourceTree = "<group>"; };
@@ -60,6 +60,7 @@
 		6AE9502077ECBBCBDBE49F24 /* Pods-zipDemo-tvOSTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-zipDemo-tvOSTests.release.xcconfig"; path = "Target Support Files/Pods-zipDemo-tvOSTests/Pods-zipDemo-tvOSTests.release.xcconfig"; sourceTree = "<group>"; };
 		7CB6002678DFED8A04938EAE /* Pods-zipDemoTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-zipDemoTests.release.xcconfig"; path = "Target Support Files/Pods-zipDemoTests/Pods-zipDemoTests.release.xcconfig"; sourceTree = "<group>"; };
 		8C3855382ECF4AF8FF077C58 /* Pods-zipDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-zipDemo.release.xcconfig"; path = "Target Support Files/Pods-zipDemo/Pods-zipDemo.release.xcconfig"; sourceTree = "<group>"; };
+		9620A45A23C5F1FA002F7800 /* main.jsbundle */ = {isa = PBXFileReference; lastKnownFileType = text; path = main.jsbundle; sourceTree = "<group>"; };
 		AECD80D53EE29BEA061EB495 /* Pods-zipDemo-tvOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-zipDemo-tvOS.release.xcconfig"; path = "Target Support Files/Pods-zipDemo-tvOS/Pods-zipDemo-tvOS.release.xcconfig"; sourceTree = "<group>"; };
 		C3AC575A236524AD290BAB07 /* Pods-zipDemo-tvOSTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-zipDemo-tvOSTests.debug.xcconfig"; path = "Target Support Files/Pods-zipDemo-tvOSTests/Pods-zipDemo-tvOSTests.debug.xcconfig"; sourceTree = "<group>"; };
 		D57803A96462279F7DA73DDE /* Pods-zipDemoTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-zipDemoTests.debug.xcconfig"; path = "Target Support Files/Pods-zipDemoTests/Pods-zipDemoTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -125,7 +126,7 @@
 		13B07FAE1A68108700A75B9A /* zipDemo */ = {
 			isa = PBXGroup;
 			children = (
-				008F07F21AC5B25A0029DE68 /* main.jsbundle */,
+				9620A45A23C5F1FA002F7800 /* main.jsbundle */,
 				13B07FAF1A68108700A75B9A /* AppDelegate.h */,
 				13B07FB01A68108700A75B9A /* AppDelegate.m */,
 				13B07FB51A68108700A75B9A /* Images.xcassets */,
@@ -161,7 +162,6 @@
 				D57803A96462279F7DA73DDE /* Pods-zipDemoTests.debug.xcconfig */,
 				7CB6002678DFED8A04938EAE /* Pods-zipDemoTests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -308,6 +308,7 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				en,
 				Base,
 			);
@@ -336,6 +337,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9620A45B23C5F1FA002F7800 /* main.jsbundle in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
 				13B07FBD1A68108700A75B9A /* LaunchScreen.xib in Resources */,
 			);

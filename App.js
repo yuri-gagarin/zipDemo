@@ -12,11 +12,8 @@ import store from "./src/redux/store";
 // React navigation  imports //
 import "react-native-gesture-handler";
 import { createAppContainer } from "react-navigation";
-import { createStackNavigator } from "react-navigation-stack";
-import { navigatorRoutes, stackNavigatorConfig } from "./src/config/navigatorConfig";
+import mainNavigator from "./src/config/navigatorConfig";
 
-// React navigation setup //
-const MainNavigator = createStackNavigator(navigatorRoutes, stackNavigatorConfig);
 // Main app Page //
 
 class App extends Component {
@@ -35,4 +32,4 @@ class App extends Component {
   }
 };
 
-export default createAppContainer(MainNavigator);
+export default createAppContainer(mainNavigator);
