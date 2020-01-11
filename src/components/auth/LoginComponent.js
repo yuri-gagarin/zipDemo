@@ -1,5 +1,12 @@
 import React, { useState } from "react";
-import { View, Text, TouchableOpacity, TextInput, Image } from "react-native";
+import { 
+  AsyncStorage,
+  Image,
+  Text, 
+  TouchableOpacity, 
+  TextInput, 
+  View
+  } from "react-native";
 // Additional Components //
 import PasswordToggle from "./PasswordToggle";
 // Styles and Images //
@@ -37,8 +44,20 @@ const LoginComponent = (props) => {
       passwordHidden: !loginState.passwordHidden
     });
   };
+  const handleLogin = ({ email, password }) => {
+    const { navigation } = props;
+    // Login and Authentication API call here //
+    const token = "afaketoken";
+    AsyncStorage.setItem("loginToken", token)
+      .then((value) => {
+        console.log(value);
+        console.log("Navigating")
+        navigation.navigate("main");
+      })
+  };
   const goToRegistration = () => {
-
+    const { navigation } = props;
+    navigation.navigate("register");
   };
 
   return (
@@ -60,12 +79,21 @@ const LoginComponent = (props) => {
         onChangeText={ (text) => updatePassword(text) }
         secureTextEntry={loginState.passwordHidden}
       />
-      <TouchableOpacity style = {loginStyles.loginButton}>
+      <TouchableOpacity 
+        style={loginStyles.loginButton}
+        onPressOut={handleLogin}
+      >
         <Text style={loginStyles.loginButtonText}>Login</Text>
       </TouchableOpacity>
       <TouchableOpacity 
+        style={loginStyles.goToRegisterBtn}
+        onPress={ goToRegistration }
+      >
+        <Text style={loginStyles.goToRegisterText}>New? Register</Text>
+      </TouchableOpacity>
+      <TouchableOpacity 
         style={loginStyles.forgotLogin}
-        onPress={goToRegistration}
+        onPress={ (props) => goToRegistration(props) }
       >
         <Text>Forgot Login or Password?</Text>
       </TouchableOpacity>

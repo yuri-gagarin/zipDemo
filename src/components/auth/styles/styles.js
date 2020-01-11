@@ -1,6 +1,7 @@
+import { StyleSheet } from "react-native";
 
 // LoginComponent styling //
-export const loginStyles = {
+export const loginStyles = StyleSheet.create({
   loginView: {
     flex: 1,
     flexDirection: "column",
@@ -53,17 +54,26 @@ export const loginStyles = {
     textAlign: "center",
     marginTop: "12%"
   },
+  goToRegisterBtn: {
+    height: 30,
+    width: 100,
+    borderWidth: 2,
+    borderColor: "green"
+  },
+  goToRegisterBtnText: {
+
+  },
   forgotLogin: {
     position: "absolute",
     bottom: "10%",
     height: 20,
     width: "auto",
   }
-};
+});
 // END LoginComponent styling //
 
 // RegistrationComponent styling //
-export const registrationStyles = {
+export const registrationStyles = StyleSheet.create({
   registrationView: {
     flex: 1,
     flexDirection: "column",
@@ -96,11 +106,11 @@ export const registrationStyles = {
   passwordConfirm: {
 
   }
-};
+});
 // END RegistrationComponent styling //
 
 // PasswordToggleComponent styling //
-export const passwordToggleStyle = {
+export const passwordToggleStyle = StyleSheet.create({
   touchable: {
     borderWidth: 2,
     borderColor: "gray",
@@ -111,5 +121,5 @@ export const passwordToggleStyle = {
   innerText: {
 
   }
-};
+});
 // END PasswrodToggleComponent styling //

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { View, Text, TextInput, TouchableOpacity } from "react-native";
+import { View, Text, TextInput, Image, TouchableOpacity } from "react-native";
 // additional Components //
 import PasswordToggle from "./PasswordToggle";
 // Style imports and images //
@@ -35,6 +35,10 @@ const RegistrationComponent = (props) => {
       passwordHidden: !registrationState.passwordHidden
     });
   };
+  const goToLogin = () => {
+    const { navigation } = props;
+    navigation.navigate("login");
+  };
 
   return (
     <View style={registrationStyles.registrationView}>
@@ -52,7 +56,7 @@ const RegistrationComponent = (props) => {
       />
       <PasswordToggle 
         displayed={true}
-        togglePassVisibility={togglePassVisibility()}
+        togglePassVisibility={togglePassVisibility}
       />
       <Text style={registrationStyles.passwordLabel}>Password</Text>
       <TextInput
@@ -64,6 +68,12 @@ const RegistrationComponent = (props) => {
         style={registrationStyles.passwordInput}
         onChangeText={ (text) => updateEmailConfirm(text) }
       />
+      <TouchableOpacity 
+        style={registrationStyles.goToLoginBtn}
+        onPressOut={goToLogin}
+      >
+        <Text>Have an Account? Login</Text>
+      </TouchableOpacity>
 
     </View>
   )

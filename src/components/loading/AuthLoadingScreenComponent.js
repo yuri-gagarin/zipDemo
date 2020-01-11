@@ -7,19 +7,22 @@ import {
 } from "react-native";
 // propTypes //
 import propTypes from "prop-types";
+// constants //
+import componentConstants from "../../redux/constants/componentConstants";
+const { API_TOKEN } = componentConstants;
 
 const AuthLoadingScreenComponent  = (props) => {
 
-  const bootStrap = () => {
+  const checkLogin = () => {
     const { navigation } = props;
-    return AsyncStorage.getItem('userToken')
+    return AsyncStorage.getItem(API_TOKEN)
       .then((token) => {
         navigation.navigate(token ? "App": "Auth");
       });
   };
 
   useEffect(() => {
-    return bootStrap();
+    checkLogin();
   });
 
   return (
@@ -30,7 +33,7 @@ const AuthLoadingScreenComponent  = (props) => {
   );
 };
 
-AuthLoadingScreenComponent.PropTypes = {
+AuthLoadingScreenComponent.propTypes = {
   navigation: propTypes.object.isRequired
 };
 

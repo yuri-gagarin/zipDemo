@@ -1,7 +1,8 @@
+// react //
+import React from "react";
 // navigation imports //
 import { createStackNavigator } from "react-navigation-stack";
 import createAnimatedSwitchNavigator from "react-navigation-animated-switch";
-import { navigatorRoutes, navigatorConfig } from "./src/config/navigatorConfig";
 
 // Component Imports //
 import LoginComponent from "../components/auth/LoginComponent";
@@ -20,6 +21,18 @@ const appRoutes = {
 };
 const appStackConfig = {
   // app routes config here //
+};
+// authorizaton routes and config //
+const authRoutes = {
+  login: {
+    screen: LoginComponent
+  },
+  register: {
+    screen: RegistrationComponent
+  }
+};
+const authStackConfig = {
+  // auth routes config here //
   transition: (
     <Transition.Together>
       <Transition.Out
@@ -33,18 +46,6 @@ const appStackConfig = {
       />
     </Transition.Together>
   )
-};
-// authorizaton routes and config //
-const authRoutes = {
-  login: {
-    screen: LoginComponent
-  },
-  register: {
-    screen: RegistrationComponent
-  }
-};
-const authStackConfig = {
-  // auth routes config here //
 };
 
 
@@ -61,8 +62,21 @@ const navigatorRoutes = {
 };
 const navigatorConfig = {
   // general navigator config here //
-  initialRouteName: "AuthLoading"
+  initialRouteName: "AuthLoading",
+  transition: (
+    <Transition.Together>
+      <Transition.Out
+        type={"slide-bottom"}
+        durationMs={500}
+        interpolation={"linear"}
+      />
+      <Transition.In 
+        type={"fade"}
+        durationMs={500}
+      />
+    </Transition.Together>
+  )
 };
-const  MainNavigator = createStackNavigator(navigatorRoutes, navigatorConfig);
+const  MainNavigator = createAnimatedSwitchNavigator(navigatorRoutes, navigatorConfig);
 
 export default MainNavigator;
