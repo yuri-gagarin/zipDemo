@@ -1,12 +1,12 @@
 import React, { useState } from "react";
 import { 
-  AsyncStorage,
   Image,
   Text, 
   TouchableOpacity, 
   TextInput, 
   View
   } from "react-native";
+import AsyncStorage from '@react-native-community/async-storage';
 // Additional Components //
 import PasswordToggle from "./PasswordToggle";
 // Styles and Images //
@@ -52,7 +52,10 @@ const LoginComponent = (props) => {
       .then((value) => {
         console.log(value);
         console.log("Navigating")
-        navigation.navigate("main");
+        navigation.navigate("homeScreen");
+      })  
+      .catch((error) => {
+        console.error(error);
       })
   };
   const goToRegistration = () => {
@@ -89,7 +92,7 @@ const LoginComponent = (props) => {
         style={loginStyles.goToRegisterBtn}
         onPress={ goToRegistration }
       >
-        <Text style={loginStyles.goToRegisterText}>New? Register</Text>
+        <Text style={loginStyles.goToRegisterBtnText}>New? Register</Text>
       </TouchableOpacity>
       <TouchableOpacity 
         style={loginStyles.forgotLogin}

@@ -35,6 +35,9 @@ const RegistrationComponent = (props) => {
       passwordHidden: !registrationState.passwordHidden
     });
   };
+  const handleRegistration = ({email, password}) => {
+
+  };
   const goToLogin = () => {
     const { navigation } = props;
     navigation.navigate("login");
@@ -68,6 +71,12 @@ const RegistrationComponent = (props) => {
         style={registrationStyles.passwordInput}
         onChangeText={ (text) => updateEmailConfirm(text) }
       />
+      <TouchableOpacity
+        style={registrationStyles.registerBtn}
+        onPressOut={handleRegistration}
+      >
+        <Text style={registrationStyles.registerBtnText}>Register</Text>
+      </TouchableOpacity>
       <TouchableOpacity 
         style={registrationStyles.goToLoginBtn}
         onPressOut={goToLogin}
