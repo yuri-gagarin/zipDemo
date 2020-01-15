@@ -9,6 +9,7 @@ const TopHomeNavbar = (props) => {
   const openMessages = () => {
     // navigate to app messages //
     console.log("toggle messages");
+    navigation.navigate("messagesScreen");
   };
   const openProfile = () => {
     // navigate to personal profile //

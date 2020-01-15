@@ -12,6 +12,8 @@ import PasswordToggle from "./PasswordToggle";
 // Styles and Images //
 import { loginStyles } from "./styles/styles";
 import { mainLogoImg } from "../../images/imageIndex";
+// helpers and constants //
+import { API_TOKEN } from "../../redux/constants/componentConstants";
 
 const LoginComponent = (props) => {
 
@@ -48,10 +50,10 @@ const LoginComponent = (props) => {
     const { navigation } = props;
     // Login and Authentication API call here //
     const token = "afaketoken";
-    AsyncStorage.setItem("loginToken", token)
+    AsyncStorage.setItem(API_TOKEN, token)
       .then((value) => {
-        console.log(value);
-        console.log("Navigating")
+        console.info(value);
+        console.info("Navigating")
         navigation.navigate("homeScreen");
       })  
       .catch((error) => {

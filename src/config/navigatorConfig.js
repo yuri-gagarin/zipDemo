@@ -5,10 +5,12 @@ import { createStackNavigator } from "react-navigation-stack";
 import createAnimatedSwitchNavigator from "react-navigation-animated-switch";
 
 // Component Imports //
-import LoginComponent from "../components/auth/LoginComponent";
-import RegistrationComponent from "../components/auth/RegistrationComponent";
 import AuthLoadingScreenComponent from "../components/loading/AuthLoadingScreenComponent";
 import HomeScreenComponent from "../components/home/HomeScreenComponent";
+import LoginComponent from "../components/auth/LoginComponent";
+import MessagesComponent from "../components/messages/MessagesComponent";
+import RegistrationComponent from "../components/auth/RegistrationComponent";
+import ProfileComponent from "../components/messages/MessagesComponent";
 
 // additional imports //
 import { Transition } from "react-native-reanimated"; 
@@ -17,10 +19,18 @@ import { Transition } from "react-native-reanimated";
 const appRoutes = {
   homeScreen: {
     screen: HomeScreenComponent
+  },
+  messagesScreen: {
+    screen: MessagesComponent
+  },
+  profileScreen: {
+    screen: ProfileComponent
   }
 };
 const appStackConfig = {
   // app routes config here //
+  headerTintColor: "black"
+
 };
 // authorizaton routes and config //
 const authRoutes = {
