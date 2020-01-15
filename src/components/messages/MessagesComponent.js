@@ -21,15 +21,23 @@ const mockMessages = [
     message: "a third message"
   }
 ]
+/*
 const Message = (props) => {
   const { sender, message } = props;
+  const openMessage = () => {
+    console.info("open message");
+    return null;
+  };
   return (
-    <View style={messageStyle.messageContainer} >
-      <Text>{sender}</Text>
-      <Text>{message}</Text>
-    </View>
+    <TouchableOpacity>
+      <View style={messageStyle.messageContainer} >
+        <Text>{sender}</Text>
+        <Text>{message}</Text>
+      </View>
+    </TouchableOpacity>
   );
 }
+*/
 const MessagesComponent = (props) => {
   const initialState = [];
   const [ messages, updateMessagesState ] = useState(initialState);
@@ -44,25 +52,41 @@ const MessagesComponent = (props) => {
     });
   };
 
+  const openMessage = () => {
+
+  };
+
+  const onSelect = () => {
+
+  };
+
+  const renderMessage = ({item, index, separators}) => {
+    return (
+      <TouchableOpacity
+        style={messageStyle.messageContainer}
+        onPress={openMessage}
+      >
+        <View style={messageStyle.messageContainer} >
+          <Text>{item.sender}</Text>
+          <Text>{item.message}</Text>
+        </View>
+      </TouchableOpacity>
+    )
+  };
+
   useEffect(() => {
     getNewMessages();
   }, []);
 
   return (
     <View style={msgComponentStyle.viewContainer}>
-      <Text style={msgComponentStyle.titleText}>Messages Component</Text>
-      {
-        messages.map((message) => {
-          console.log(message)
-          return (
-            <Message
-              key={message._id}
-              sender={message.sender}
-              message={message.message}
-            />
-          );
-        })
-      }
+      <FlatList
+        data={messages}
+        renderItem={renderMessage}
+        keyExtractor={ (item) => item._id }
+        onSelect={onSelect} 
+      >
+      </FlatList>
     </View>
   );
 };
