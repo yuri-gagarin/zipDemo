@@ -8,10 +8,11 @@ import createAnimatedSwitchNavigator from "react-navigation-animated-switch";
 import AuthLoadingScreenComponent from "../components/loading/AuthLoadingScreenComponent";
 import HomeScreenComponent from "../components/home/HomeScreenComponent";
 import LoginComponent from "../components/auth/LoginComponent";
-import MessagesComponent from "../components/messages/MessagesComponent";
+import ConversationsComponent from "../components/messages/ConversationsComponent";
 import RegistrationComponent from "../components/auth/RegistrationComponent";
-import ProfileComponent from "../components/messages/MessagesComponent";
-
+import ProfileComponent from "../components/profile/ProfileComponent";
+// Component Navigations Buttons //
+import BackButton from "../components/buttons/BackButton";
 // additional imports //
 import { Transition } from "react-native-reanimated"; 
 
@@ -20,8 +21,8 @@ const appRoutes = {
   homeScreen: {
     screen: HomeScreenComponent
   },
-  messagesScreen: {
-    screen: MessagesComponent
+  conversationsScreen: {
+    screen: ConversationsComponent
   },
   profileScreen: {
     screen: ProfileComponent
@@ -29,8 +30,12 @@ const appRoutes = {
 };
 const appStackConfig = {
   // app routes config here //
-  headerTintColor: "black"
-
+  headerTintColor: "black",
+  headerLeft: () => {
+    return (
+      <BackButton />
+    );
+  }
 };
 // authorizaton routes and config //
 const authRoutes = {

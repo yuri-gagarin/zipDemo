@@ -1,44 +1,56 @@
 import React,  { useState, useEffect } from "react";
 import { View, FlatList, Text, TextInput, TouchableOpacity } from "react-native";
 import PropTypes from "prop-types";
+// additional dependencies //
+// additional Components //
+import BackButton from "../buttons/BackButton";
 // styles and images //
 import { msgComponentStyle, messageStyle } from "./styles/styles";
 
 const mockMessages = [
   {
-    _id: 1,
-    sender: "vendor1",
-    message: "A message here"
+    _id: "1",
+    messages: [
+      {
+        _id: 1,
+        name: "vendor1",
+        message: "A message here"
+      },
+      {
+        _id: 2,
+        name: "user",
+        message: "a user reply"
+      }
+    ]
   },
   {
-    _id: 2,
-    sender: "vendor2",
-    message: "another message"
+    _id: "2",
+    messages: [
+      {
+        _id: 1,
+        name: "vendor2",
+        message: "another message"
+      },
+      {
+        _id: 2,
+        name: "user",
+        message: "another user reply"
+      }
+    ],
   },
   {
-    _id: 3,
-    sender: "vender3",
-    message: "a third message"
+    _id: "3",
+    messages: [
+      {
+        _id: 1,
+        name: "vendor3",
+        message: "another vendor message"
+      }
+    ]
   }
-]
-/*
-const Message = (props) => {
-  const { sender, message } = props;
-  const openMessage = () => {
-    console.info("open message");
-    return null;
-  };
-  return (
-    <TouchableOpacity>
-      <View style={messageStyle.messageContainer} >
-        <Text>{sender}</Text>
-        <Text>{message}</Text>
-      </View>
-    </TouchableOpacity>
-  );
-}
-*/
-const MessagesComponent = (props) => {
+];
+
+const ConversationsComponent = (props) => {
   const initialState = [];
   const [ messages, updateMessagesState ] = useState(initialState);
   const [ loading, setLoading ] = useState(false);
@@ -60,16 +72,26 @@ const MessagesComponent = (props) => {
 
   };
 
+  const deleteMessage = (messageId) => {
+    console.info("pressed");
+    console.info(messageId);
+  };  
+
   const renderMessage = ({item, index, separators}) => {
     return (
       <TouchableOpacity
         style={messageStyle.messageContainer}
-        onPress={openMessage}
+        onPressOut={openMessage}
       >
         <View style={messageStyle.messageContainer} >
-          <Text>{item.sender}</Text>
-          <Text>{item.message}</Text>
+          <Text>{item.messages[0].name}</Text>
+          <Text>{item.messages[0].message}</Text>
         </View>
+        <TouchableOpacity
+          onPressOut={() => {deleteMessage(item._id)}}
+        >
+          <Text>X</Text>
+        </TouchableOpacity>
       </TouchableOpacity>
     )
   };
@@ -91,8 +113,13 @@ const MessagesComponent = (props) => {
   );
 };
 
-MessagesComponent.propTypes = {
+ConversationsComponent.navigationOptions = {
+  title: "My Messages",
+  headerLeft: () => <BackButton />,
+}
+
+ConversationsComponent.propTypes = {
   navigation: PropTypes.object.isRequired
 };
 
-export default MessagesComponent;
+export default ConversationsComponent;
