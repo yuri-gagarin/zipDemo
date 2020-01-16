@@ -1,7 +1,7 @@
-import actionsConstants from "../constants/actionConstants";
+import { testReducerConstants } from "../constants/actionConstants";
 
 
-const { TEST, END_TEST } = actionsConstants.testReducerConstants;
+const { TEST, END_TEST } = testReducerConstants;
 const initialState = {
   message: "",
   testing: false

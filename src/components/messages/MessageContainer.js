@@ -1,8 +1,9 @@
 import React from "react";
-import { View } from "react-native";
+import { View, Text } from "react-native";
 
 
 const MessageContainer = (props) => {
+  console.log(props);
   return (
     <View>
       

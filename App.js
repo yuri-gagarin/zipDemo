@@ -9,10 +9,7 @@ import RegistrationComponent from "./src/components/auth/RegistrationComponent";
 import { Provider } from "react-redux";
 import store from "./src/redux/store";
 
-// React navigation  imports //
-import "react-native-gesture-handler";
-import { createAppContainer } from "react-navigation";
-import mainNavigator from "./src/config/navigatorConfig";
+import Navigation from "./src/config/navigatorConfig";
 
 // Main app Page //
 
@@ -26,10 +23,10 @@ class App extends Component {
   render() {
     return (
       <Provider store={store}>
-        <LoginComponent />
+        <Navigation />
       </Provider>
     );
   }
 };
 
-export default createAppContainer(mainNavigator);
+export default App;

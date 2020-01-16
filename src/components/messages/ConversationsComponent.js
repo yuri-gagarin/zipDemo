@@ -6,8 +6,10 @@ import PropTypes from "prop-types";
 import BackButton from "../buttons/BackButton";
 // styles and images //
 import { msgComponentStyle, messageStyle } from "./styles/styles";
+// redux imports //
+import { connect } from "react-redux";
 
-const mockMessages = [
+const mockConversations = [
   {
     _id: "1",
     messages: [
@@ -51,44 +53,52 @@ const mockMessages = [
 ];
 
 const ConversationsComponent = (props) => {
+  const { navigation } = props;
   const initialState = [];
-  const [ messages, updateMessagesState ] = useState(initialState);
+  const [ conversations, setConversations ] = useState(initialState);
   const [ loading, setLoading ] = useState(false);
 
-  const getNewMessages = () => {
-    // api call to get new messages //
-    const newMessages = [...mockMessages];
-    updateMessagesState((messages) => {
-      console.log(newMessages.length)
-      return [...messages, ...newMessages];
+  const getNewConversations = () => {
+    // api call to get new conversations //
+    const newConversations= [...mockConversations];
+    setConversations((conversations) => {
+      return [...conversations, ...newConversations];
     });
   };
 
-  const openMessage = () => {
-
+  const openConversation = (conversationId) => {
+    const conversation = conversations.filter((conversation) => {
+      return conversation._id === conversationId;
+    });
+    navigation.navigate("messageScreen", conversation);
   };
 
   const onSelect = () => {
 
   };
 
-  const deleteMessage = (messageId) => {
+  const deleteConversation = (conversationId) => {
     console.info("pressed");
-    console.info(messageId);
+    const newConversations = conversations.filter((conversation) => {
+      return conversation._id !== conversationId;
+    });
+    setConversations(() => {
+      return [...newConversations];
+    });
   };  
 
-  const renderMessage = ({item, index, separators}) => {
+  const renderConversation = ({item, index, separators}) => {
     return (
       <TouchableOpacity
         style={messageStyle.messageContainer}
-        onPressOut={openMessage}
+        onPressOut={() => openConversation(item._id)}
       >
         <View style={messageStyle.messageContainer} >
           <Text>{item.messages[0].name}</Text>
           <Text>{item.messages[0].message}</Text>
         </View>
         <TouchableOpacity
-          onPressOut={() => {deleteMessage(item._id)}}
+          onPressOut={() => {deleteConversation(item._id)}}
         >
           <Text>X</Text>
         </TouchableOpacity>
@@ -97,14 +107,14 @@ const ConversationsComponent = (props) => {
   };
 
   useEffect(() => {
-    getNewMessages();
+    getNewConversations();
   }, []);
 
   return (
     <View style={msgComponentStyle.viewContainer}>
       <FlatList
-        data={messages}
-        renderItem={renderMessage}
+        data={conversations}
+        renderItem={renderConversation}
         keyExtractor={ (item) => item._id }
         onSelect={onSelect} 
       >
@@ -114,12 +124,25 @@ const ConversationsComponent = (props) => {
 };
 
 ConversationsComponent.navigationOptions = {
-  title: "My Messages",
+  title: "My Conversations",
   headerLeft: () => <BackButton />,
-}
+};
 
 ConversationsComponent.propTypes = {
   navigation: PropTypes.object.isRequired
 };
 
-export default ConversationsComponent;
+
+const mapStateToProps = (state) => {
+  return {
+
+  };
+}; 
+const mapDispatchToProps = (dispatch) => {
+  return {
+
+  };
+};
+
+
+export default connect(mapStateToProps, mapDispatchToProps)(ConversationsComponent);

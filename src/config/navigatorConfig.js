@@ -1,14 +1,18 @@
 // react //
 import React from "react";
 // navigation imports //
+// React navigation  imports //
+import "react-native-gesture-handler";
+import { createAppContainer } from "react-navigation";
 import { createStackNavigator } from "react-navigation-stack";
 import createAnimatedSwitchNavigator from "react-navigation-animated-switch";
 
 // Component Imports //
 import AuthLoadingScreenComponent from "../components/loading/AuthLoadingScreenComponent";
+import ConversationsComponent from "../components/messages/ConversationsComponent";
 import HomeScreenComponent from "../components/home/HomeScreenComponent";
 import LoginComponent from "../components/auth/LoginComponent";
-import ConversationsComponent from "../components/messages/ConversationsComponent";
+import MessageContainer from "../components/messages/MessageContainer";
 import RegistrationComponent from "../components/auth/RegistrationComponent";
 import ProfileComponent from "../components/profile/ProfileComponent";
 // Component Navigations Buttons //
@@ -23,6 +27,9 @@ const appRoutes = {
   },
   conversationsScreen: {
     screen: ConversationsComponent
+  },
+  messageScreen: {
+    screen: MessageContainer
   },
   profileScreen: {
     screen: ProfileComponent
@@ -91,6 +98,6 @@ const navigatorConfig = {
     </Transition.Together>
   )
 };
-const  MainNavigator = createAnimatedSwitchNavigator(navigatorRoutes, navigatorConfig);
+const  Navigation = createAnimatedSwitchNavigator(navigatorRoutes, navigatorConfig);
 
-export default MainNavigator;
+export default createAppContainer(Navigation);
