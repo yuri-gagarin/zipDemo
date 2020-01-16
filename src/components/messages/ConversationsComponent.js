@@ -135,7 +135,7 @@ ConversationsComponent.propTypes = {
 
 const mapStateToProps = (state) => {
   return {
-
+    conversationState = state.conversationState
   };
 }; 
 const mapDispatchToProps = (dispatch) => {
