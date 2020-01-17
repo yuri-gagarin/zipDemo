@@ -2,6 +2,7 @@ import React,  { useState, useEffect } from "react";
 import { View, FlatList, Text, TextInput, TouchableOpacity } from "react-native";
 import PropTypes from "prop-types";
 // additional dependencies //
+
 // additional Components //
 import BackButton from "../buttons/BackButton";
 // styles and images //
@@ -9,54 +10,9 @@ import { msgComponentStyle, messageStyle } from "./styles/styles";
 // redux imports //
 import { connect } from "react-redux";
 
-const mockConversations = [
-  {
-    _id: "1",
-    messages: [
-      {
-        _id: 1,
-        name: "vendor1",
-        message: "A message here"
-      },
-      {
-        _id: 2,
-        name: "user",
-        message: "a user reply"
-      }
-    ]
-  },
-  {
-    _id: "2",
-    messages: [
-      {
-        _id: 1,
-        name: "vendor2",
-        message: "another message"
-      },
-      {
-        _id: 2,
-        name: "user",
-        message: "another user reply"
-      }
-    ],
-  },
-  {
-    _id: "3",
-    messages: [
-      {
-        _id: 1,
-        name: "vendor3",
-        message: "another vendor message"
-      }
-    ]
-  }
-];
 
 const ConversationsComponent = (props) => {
-  const { navigation } = props;
-  const initialState = [];
-  const [ conversations, setConversations ] = useState(initialState);
-  const [ loading, setLoading ] = useState(false);
+  const { navigation, conversationState } = props;
 
   const getNewConversations = () => {
     // api call to get new conversations //
@@ -123,24 +79,30 @@ const ConversationsComponent = (props) => {
   );
 };
 
+// react-navigation options //
 ConversationsComponent.navigationOptions = {
   title: "My Conversations",
   headerLeft: () => <BackButton />,
 };
 
+// proptypes checking //
 ConversationsComponent.propTypes = {
-  navigation: PropTypes.object.isRequired
+  navigation: PropTypes.object.isRequired,
+  conversationState: PropTypes.object.isRequired,
+  openConversation: PropTypes.func.isRequired,
+  deleteConversation: PropTypes.func.isRequired
 };
 
-
+// redux mapState and mapDispatch //
 const mapStateToProps = (state) => {
   return {
-    conversationState = state.conversationState
+    conversationsState: state.conversationsState
   };
 }; 
 const mapDispatchToProps = (dispatch) => {
-  return {
-
+  return { 
+    openConversation = () => dispatch(openConversation),
+    deleteConversation = (conversationId) => dispatch(deleteConversation(conversationId))
   };
 };
 

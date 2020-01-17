@@ -1,25 +1,37 @@
 import { messagesConstants } from "../constants/actionConstants";
 
-const { DELETE_MESSAGE, SEND_MESSAGE } = messagesConstants;
-const initialState = {};
+const { DELETE_MESSAGE, SEND_MESSAGE, RECEIVE_MESSAGE } = messagesConstants;
+const initialState = {
+  loading: false,
+  messages: [],
+  messagesError: null
+};
 
 const messagesReducer = (state = initialState, action) => {
 
   const { payload, type } = action;
 
   switch (type) {
-    case SEND_MESSAGE: 
+    case RECEIVE_MESSAGE: {
       return {
         ...state
       };
-    case DELETE_MESSAGE: 
+    };
+    case SEND_MESSAGE: {
       return {
         ...state
       };
-    default: 
+    };
+    case DELETE_MESSAGE: {
       return {
         ...state
       };
+    };
+    default: {
+      return {
+        ...state
+      };
+    };
   };
 };
 
