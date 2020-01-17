@@ -1,10 +1,49 @@
 import { messagesConstants } from "../constants/actionConstants";
 
 const {
+  UPDATE_MESSAGES,
+  REQUEST_MESSAGES,
   RECEIVE_MESSAGE,
   SEND_MESSAGE,
   DELETE_MESSAGE
 } = messagesConstants;
+
+const mockMessages = [];
+
+/**
+ * Notifies state of Message request
+ * @returns {Object} A redux action
+ */
+export const requestMessages = () => {
+  return {
+    type: REQUEST_MESSAGES,
+    payload: {
+      responseMsg: "Loading",
+      loading: true,
+      messagesError: null
+    }
+  };
+};
+
+/**
+ * Updates Messages after an API and/or {AsyncStorage} request
+ * @param {Object} newData - New data for the application state
+ * @param {string} newData.responseMsg - An API response message
+ * @param {Object[]} newData.messages - An array of Message objects
+ * @returns {Object} A redux action object 
+ */
+export const updateMessages = ({ responseMsg, messages }) => {
+
+  return {
+    type: UPDATE_MESSAGES,
+    payload: {
+      responseMsg: responseMsg,
+      loading: false,
+      messages: [...messages],
+      messagesError: null
+    }
+  };
+};
 
 /**
  * Receives a message and updates state

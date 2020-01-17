@@ -16,7 +16,7 @@ const ConversationsComponent = (props) => {
 
   const getNewConversations = () => {
     // api call to get new conversations //
-    const newConversations= [...mockConversations];
+    const newConversations= [];
     setConversations((conversations) => {
       return [...conversations, ...newConversations];
     });

@@ -13,6 +13,8 @@ export const conversationConstants = {
 };
 
 export const messagesConstants = {
+  REQUEST_MESSAGES: "REQUEST_MESSAGES",
+  UPDATE_MESSAGES: "UPDATE_MESSAGES",
   DELETE_MESSAGE: "DELETE_MESSAGE",
   RECEIVE_MESSAGE: "RECEIVE_MESSAGE",
   SEND_MESSAGE: "SEND_MESSAGE",
