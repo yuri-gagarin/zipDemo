@@ -9,52 +9,50 @@ import BackButton from "../buttons/BackButton";
 import { msgComponentStyle, messageStyle } from "./styles/styles";
 // redux imports //
 import { connect } from "react-redux";
+import { fetchAndUpdateConversations, deleteConversation } from "../../redux/actions/conversationsActions";
 
 
 const ConversationsComponent = (props) => {
-  const { navigation, conversationState } = props;
+  const { 
+    navigation, 
+    conversationState, 
+    messagesState,
+    openConversation,
+    deleteConversation
+  } = props;
 
-  const getNewConversations = () => {
-    // api call to get new conversations //
-    const newConversations= [];
-    setConversations((conversations) => {
-      return [...conversations, ...newConversations];
-    });
+  const { 
+    loading,
+    responseMsg,
+    conversations,
+    conversationsError
+  } = conversationState;
+
+  const handleOpenConversation = (conversationId) => {
+    openConversation(conversationId);
+    navigation.navigate("messageScreen", conversation);
   };
 
-  const openConversation = (conversationId) => {
-    const conversation = conversations.filter((conversation) => {
-      return conversation._id === conversationId;
-    });
-    navigation.navigate("messageScreen", conversation);
+  const handleDeleteConversation = (conversationId) => {
+    deleteConversation(conversationId);
   };
 
   const onSelect = () => {
 
   };
 
-  const deleteConversation = (conversationId) => {
-    console.info("pressed");
-    const newConversations = conversations.filter((conversation) => {
-      return conversation._id !== conversationId;
-    });
-    setConversations(() => {
-      return [...newConversations];
-    });
-  };  
-
   const renderConversation = ({item, index, separators}) => {
     return (
       <TouchableOpacity
         style={messageStyle.messageContainer}
-        onPressOut={() => openConversation(item._id)}
+        onPressOut={ () => handleOpenConversation(item._id) }
       >
         <View style={messageStyle.messageContainer} >
           <Text>{item.messages[0].name}</Text>
           <Text>{item.messages[0].message}</Text>
         </View>
         <TouchableOpacity
-          onPressOut={() => {deleteConversation(item._id)}}
+          onPressOut={ () => handleDeleteConversation(item._id) }
         >
           <Text>X</Text>
         </TouchableOpacity>
@@ -63,7 +61,7 @@ const ConversationsComponent = (props) => {
   };
 
   useEffect(() => {
-    getNewConversations();
+    fetchAndUpdateConversations();
   }, []);
 
   return (
@@ -96,13 +94,14 @@ ConversationsComponent.propTypes = {
 // redux mapState and mapDispatch //
 const mapStateToProps = (state) => {
   return {
-    conversationsState: state.conversationsState
+    conversationsState: state.conversationsState,
+    messagesState: state.messagesState
   };
 }; 
 const mapDispatchToProps = (dispatch) => {
   return { 
-    openConversation = () => dispatch(openConversation),
-    deleteConversation = (conversationId) => dispatch(deleteConversation(conversationId))
+    openConversation: (conversationId) => dispatch(openConversation(conversationId)),
+    deleteConversation: (conversationId) => dispatch(deleteConversation(conversationId))
   };
 };
 

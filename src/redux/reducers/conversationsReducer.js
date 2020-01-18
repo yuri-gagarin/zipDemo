@@ -45,6 +45,9 @@ const mockConversations = [
 ];
 // constant and inital state setup //
 const { 
+  FETCH_CONVERSATIONS,
+  REQUEST_CONVERSATIONS,
+  UPDATE_CONVERSATIONS,
   OPEN_CONVERSATION, 
   CLOSE_CONVERSATION, 
   DELETE_CONVERSATION,
@@ -52,7 +55,9 @@ const {
 } = conversationConstants;
 // initial state //
 const initialState = {
+  status: null,
   loading: false,
+  responseMsg: "",
   conversations: [...mockConversations],
   messages: [],
   conversationsError: null
@@ -61,6 +66,24 @@ const initialState = {
 const conversationsReducer = (state = initialState, action) => {
   const { type, payload } = action;
   switch (type) {
+    case REQUEST_CONVERSATIONS: {
+      return {
+        ...state,
+        loading: payload.loading,
+        responseMsg: payload.responseMsg,
+        conversationsError: payload.conversationsError
+      };
+    };
+    case UPDATE_CONVERSATIONS: {
+      return {
+        ...state,
+        status: payload.status,
+        loading: payload.loading,
+        responseMsg: payload.responseMsg,
+        conversations: [...payload.conversations],
+        conversationsError: payload.conversationsError
+      };
+    };
     case OPEN_CONVERSATION: {
       return {
         ...state, 
@@ -88,8 +111,10 @@ const conversationsReducer = (state = initialState, action) => {
     case CONVERSATIONS_ERROR: {
       return {
         ...state,
+        status: payload.status,
         loading: false,
-        conversationsError: payload.error
+        responseMsg: payload.responseMsg,
+        conversationsError: {...payload.error}
       };
     };
     default: {

@@ -5,10 +5,39 @@ const {
   REQUEST_MESSAGES,
   RECEIVE_MESSAGE,
   SEND_MESSAGE,
-  DELETE_MESSAGE
+  DELETE_MESSAGE,
+  MESSAGES_ERROR
 } = messagesConstants;
 
-const mockMessages = [];
+const mockMessages = [
+  {
+    _id: "1",
+    name: "vendor1",
+    message: "hello there"
+  },
+  {
+    _id: "2",
+    name: "vendor1",
+    message: "confirmed"
+  },
+  {
+    _id: "3",
+    name: "user",
+    message: "understood"
+  }
+];
+
+const mockRequest = () => {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      resolve({
+        status: 200,
+        responseMsg: "Success",
+        messages: [...mockMessages]
+      });
+    });
+  });
+};
 
 /**
  * Notifies state of Message request
@@ -42,6 +71,44 @@ export const updateMessages = ({ responseMsg, messages }) => {
       messages: [...messages],
       messagesError: null
     }
+  };
+};
+
+/**
+ * Notifies application state of Message(s) error
+ * @param {Object} error - An API error response
+ * @returns {Object} A redux action object
+ */
+export const messagesError = (error) => {
+  return {
+    type: MESSAGES_ERROR,
+    payload: {
+      responseMsg: error.message,
+      loading: false,
+      messagesError: error
+    }
+  };
+};
+
+/**
+ * Fetches and updates messages with a conversation thread
+ * @param {string} conversationId - An ObjectId for Conversation to query Message(s)
+ * @param {Object[]} currentMessages - Current Message(s) array in application state
+ * @returns {Promise<Object>} A {Promise} which resolves to redux axtion object
+ */
+export const fetchAndUpdateMessages = (conversationId, currentMessages = []) => {
+
+  return function (dispatch) {
+    dispatch(requestMessages);
+
+    return mockRequest()
+      .then((response) => {
+        const { status, responseMsg, messages } = response;
+        return dispatch(updateMessages({responseMsg: responseMsg, messages: messages}));
+      })
+      .catch((error) => {
+        return dispatch(messagesError(messages));
+    });
   };
 };
 
