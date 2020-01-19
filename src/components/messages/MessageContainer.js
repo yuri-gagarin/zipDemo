@@ -1,11 +1,20 @@
-import React,  { useEffect } from "react";
-import { View, Text } from "react-native";
+import React,  { useState, useEffect } from "react";
+import { View, 
+  Text, 
+  KeyboardAvoidingView, 
+  TextInput, 
+  Platform, 
+  FlatList, 
+  NativeModules, 
+  StatusBarIOS 
+} from "react-native";
 import PropTypes from "prop-types";
 // stylesheets and images //
 import { messageStyle } from "./styles/styles";
 // redux imports //
 import { connect } from "react-redux";
 
+let messageConvoTitle = "title";
 
 const MessageContainer = (props) => {
   // current user logged in //  
@@ -14,41 +23,60 @@ const MessageContainer = (props) => {
   const { messagesState, navigation } = props;
   const { messages } = messagesState;
 
-  const renderMessages = (messages) => {
+ 
+
+  const renderMessage = ({ item }) => {
     // messages should be rendered by user and vendor sender //
-    const userMessages = messages.filter((message) => message.name === currentUser);
-    const replyMessages = messages.filter((message) => message.name !== currentUser);
-    
+    console.log(item);
+    if (item.name === currentUser) {
+      return (
+        <View key={item._id} style={messageStyle.userMessage}>
+          <Text>{item.name}</Text>
+          <Text>{item.message}</Text>
+        </View>
+      );
+    }
+    else {
+      return (
+        <View key={item._id} style={messageStyle.replyMessage}>
+          <Text>{item.name}</Text>
+          <Text>{item.message}</Text>
+        </View>
+      );
+    }
   };
-  return (
-    <View style={messageStyle.messageContainer}>
-      {
-        messages.map((message) => {
-          // //
-          if (message.name === currentUser) {
-            return (
-              <View key={message._id} style={messageStyle.userMessage}>
-                <Text>{message.name}</Text>
-                <Text>{message.message}</Text>
-              </View>
-            );
-          }
-          else {
-            return (
-              <View key={message._id} style={messageStyle.replyMessage}>
-                <Text>{message.name}</Text>
-                <Text>{message.message}</Text>
-              </View>
-            );
-          }
-        })
+
+  useEffect(() => {
+    console.log(Platform.OS)
+    for (let i = 0; i < messages.length; i ++ ) {
+      if(messages[i].name !== currentUser) {
+        messageConvoTitle = messages[i].name;
+        break;
       }
-    </View>
+    }
+  }); 
+
+  return (
+    <KeyboardAvoidingView  
+      behavior={Platform.OS === "ios" ? "padding" : null} 
+      keyboardVerticalOffset={Platform.OS === "ios" ? 90 : 0}
+      style={{flex: 1}} 
+      enabled
+    >
+      <FlatList 
+        style={messageStyle.messageContainer} 
+        data={messages}
+        renderItem={renderMessage}
+        keyExtractor={(message) => message._id}
+      >
+      </FlatList>
+      <TextInput style={messageStyle.messagesInput} />
+    </KeyboardAvoidingView>
   );
 };
 // react-navigation options //
 MessageContainer.navigationOptions = {
-  title: "Conversation"
+  title: messageConvoTitle
 }
 // proptypes checking //
 MessageContainer.propTypes = {

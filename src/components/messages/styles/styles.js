@@ -9,7 +9,6 @@ export const msgComponentStyle = StyleSheet.create({
 
 export const messageStyle = StyleSheet.create({
   messageContainer: {
-    flex: 1,
     position: "relative",
     borderWidth: 2,
     borderColor: "green"
@@ -33,6 +32,13 @@ export const messageStyle = StyleSheet.create({
     borderWidth: 2,
     borderRadius: 10,
     borderColor: "red"
+  },
+  messagesInput: {
+    width: "100%",
+    justifyContent: "flex-end",
+    height: 50,
+    borderWidth: 2,
+    borderColor: "red",
   }
 });
 
