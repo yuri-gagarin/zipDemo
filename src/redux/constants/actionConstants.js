@@ -2,6 +2,7 @@ export  const testReducerConstants = {
   TEST: "TEST",
   END_TEST: "END_TEST"
 };
+// conversation action/reducer constants //
 export const conversationConstants = {
   FETCH_CONVERSATIONS: "FETCH_CONVERSATIONS",
   REQUEST_CONVERSATIONS: "REQUEST_CONVERSATIONS",
@@ -11,7 +12,7 @@ export const conversationConstants = {
   DELETE_CONVERSATION: "DELETE_CONVERSATION",
   CONVERSATIONS_ERROR: "CONVERSATIONS_ERROR"
 };
-
+// messages action/reducer constants //
 export const messagesConstants = {
   REQUEST_MESSAGES: "REQUEST_MESSAGES",
   UPDATE_MESSAGES: "UPDATE_MESSAGES",

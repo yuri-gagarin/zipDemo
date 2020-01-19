@@ -1,4 +1,6 @@
 import { conversationConstants } from "../constants/actionConstants";
+// message action imports //
+import { requestMessages, fetchAndUpdateMessages, updateMessages } from "./messagesActions";
 
 
 const mockRequest = () => {
@@ -111,10 +113,11 @@ export const fetchAndUpdateConversations = (currentConversations = []) => {
  * @param {string} conversationId - the ObjecId of the Conversation to open
  * @return {Object} A redux action
  */
-export const openConversation = (conversationId) => {
-  return {
-    type: OPEN_CONVERSATION,
-    payload: ""
+export const openConversation = (conversationId, messagesState = []) => {
+  // opens a conversation by ObjectId and sets the messages state //
+  return function (dispatch) {
+    dispatch(requestMessages());
+    return dispatch(fetchAndUpdateMessages(conversationId, messagesState));
   };
 };
 

@@ -23,7 +23,7 @@ const mockMessages = [
   {
     _id: "3",
     name: "user",
-    message: "understood"
+    message: "understood understoodunderstoodunderstoodunderstoodunderstoodunderstoodunderstoodunderstoodunderstoodunderstoodunderstoodunderstoodunderstoodunderstoodunderstoodunderstoodunderstoodunderstoodunderstoodunderstoodunderstoodunderstoodunderstoodunderstoodunderstoodunderstoodunderstoodunderstoodunderstood"
   }
 ];
 

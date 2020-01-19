@@ -9,13 +9,13 @@ import BackButton from "../buttons/BackButton";
 import { msgComponentStyle, messageStyle } from "./styles/styles";
 // redux imports //
 import { connect } from "react-redux";
-import { fetchAndUpdateConversations, deleteConversation } from "../../redux/actions/conversationsActions";
+import { fetchAndUpdateConversations, openConversation, deleteConversation } from "../../redux/actions/conversationsActions";
 
 
 const ConversationsComponent = (props) => {
   const { 
     navigation, 
-    conversationState, 
+    conversationsState, 
     messagesState,
     openConversation,
     deleteConversation
@@ -26,11 +26,11 @@ const ConversationsComponent = (props) => {
     responseMsg,
     conversations,
     conversationsError
-  } = conversationState;
+  } = conversationsState;
 
   const handleOpenConversation = (conversationId) => {
-    openConversation(conversationId);
-    navigation.navigate("messageScreen", conversation);
+    openConversation(conversationId, messagesState);
+    navigation.navigate("messageScreen");
   };
 
   const handleDeleteConversation = (conversationId) => {
@@ -86,7 +86,8 @@ ConversationsComponent.navigationOptions = {
 // proptypes checking //
 ConversationsComponent.propTypes = {
   navigation: PropTypes.object.isRequired,
-  conversationState: PropTypes.object.isRequired,
+  conversationsState: PropTypes.object.isRequired,
+  messagesState: PropTypes.object.isRequired,
   openConversation: PropTypes.func.isRequired,
   deleteConversation: PropTypes.func.isRequired
 };
@@ -100,7 +101,7 @@ const mapStateToProps = (state) => {
 }; 
 const mapDispatchToProps = (dispatch) => {
   return { 
-    openConversation: (conversationId) => dispatch(openConversation(conversationId)),
+    openConversation: (conversationId, messagesState) => dispatch(openConversation(conversationId, messagesState)),
     deleteConversation: (conversationId) => dispatch(deleteConversation(conversationId))
   };
 };
