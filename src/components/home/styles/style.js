@@ -68,3 +68,19 @@ export const topHomeNavStyles = StyleSheet.create({
   }
 });
 // END TopHomeNavbar styles //
+// MapScreen styles //
+export const mapScreenStyles = StyleSheet.create({
+  mapContainer: {
+    flex: 1,
+    height: 500,
+    borderWidth: 2,
+    borderColor: "blue",
+
+  },
+  mapLogo: {
+    height: 400,
+    width: "100%",
+    overflow: "hidden"
+  }
+});
+// END MapScreen styles //

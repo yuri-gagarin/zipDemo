@@ -3,6 +3,7 @@ import { View, Text } from "react-native";
 import PropTypes from "prop-types";
 // additional components /
 import TopHomeNavbar from "./TopHomeNavbar";
+import MapScreeen from "./MapScreen";
 // styles and images //
 import { homeScreenStyles } from "./styles/style";
 
@@ -14,9 +15,7 @@ const HomeScreenComponent = (props) => {
         newMessages={5}
         navigation={navigation}
       />
-      <View style={{flex: 6}}>
-
-      </View>
+      <MapScreeen />
     </View>
   );
 };
