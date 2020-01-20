@@ -65,6 +65,7 @@ const ConversationsComponent = (props) => {
       <TouchableOpacity 
         key={item._id} 
         style={conversationStyle.conversationDeleteBtn} 
+        onPressOut={ () => deleteConversation(item._id) }
         activeOpacity={0.5}
       >
         <Text>X</Text>

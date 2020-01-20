@@ -17,7 +17,7 @@ const BackButton = ({navigation}) => {
       style={backButton.touchable}
       onPress={goBack}
     >
-      <Text style={backButton.text}>Back</Text>
+      <Text style={backButton.text}>Назад</Text>
     </TouchableOpacity>
   );
 };

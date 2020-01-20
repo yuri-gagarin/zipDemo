@@ -8,13 +8,12 @@ const TopHomeNavbar = (props) => {
   const { navigation, newMessages } = props;
   const openMessages = () => {
     // navigate to app messages //
-    console.log("toggle messages");
     navigation.navigate("conversationsScreen");
   };
   const openProfile = () => {
     // navigate to personal profile //
-    console.log("toggle profile");
     console.log(navigation);
+    navigation.navigate("profileScreen")
   };
   return (
     <View style={topHomeNavStyles.mainNav}>
