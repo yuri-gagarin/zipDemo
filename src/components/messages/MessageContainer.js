@@ -23,11 +23,12 @@ const MessageContainer = (props) => {
   const { messagesState, navigation } = props;
   const { messages } = messagesState;
 
- 
+  const setStatusBarHeight = () => {
+
+  }
 
   const renderMessage = ({ item }) => {
     // messages should be rendered by user and vendor sender //
-    console.log(item);
     if (item.name === currentUser) {
       return (
         <View key={item._id} style={messageStyle.userMessage}>
@@ -47,7 +48,6 @@ const MessageContainer = (props) => {
   };
 
   useEffect(() => {
-    console.log(Platform.OS)
     for (let i = 0; i < messages.length; i ++ ) {
       if(messages[i].name !== currentUser) {
         messageConvoTitle = messages[i].name;
@@ -58,9 +58,9 @@ const MessageContainer = (props) => {
 
   return (
     <KeyboardAvoidingView  
-      behavior={Platform.OS === "ios" ? "padding" : null} 
+      behavior={Platform.OS === "ios" ? "height" : null} 
       keyboardVerticalOffset={Platform.OS === "ios" ? 90 : 0}
-      style={{flex: 1}} 
+      style={{flex: 1, borderWidth: 2, borderColor: "blue", height: "100%", paddingBottom: 0}} 
       enabled
     >
       <FlatList 

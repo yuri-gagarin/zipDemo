@@ -1,12 +1,13 @@
 import React,  { useState, useEffect } from "react";
 import { View, FlatList, Text, TextInput, TouchableOpacity } from "react-native";
+import { SwipeListView, SwipeRow } from "react-native-swipe-list-view";
 import PropTypes from "prop-types";
 // additional dependencies //
 
 // additional Components //
 import BackButton from "../buttons/BackButton";
 // styles and images //
-import { msgComponentStyle, messageStyle } from "./styles/styles";
+import { conversationStyle, msgComponentStyle, messageStyle } from "./styles/styles";
 // redux imports //
 import { connect } from "react-redux";
 import { fetchAndUpdateConversations, openConversation, deleteConversation } from "../../redux/actions/conversationsActions";
@@ -41,21 +42,33 @@ const ConversationsComponent = (props) => {
 
   };
 
-  const renderConversation = ({item, index, separators}) => {
+  const renderConversationItem = ({ item }, rowMap) => {
     return (
       <TouchableOpacity
-        style={messageStyle.messageContainer}
-        onPressOut={ () => handleOpenConversation(item._id) }
+        key={item._id}
+        style={conversationStyle.conversationRow}
+        onPress={ () => handleOpenConversation(item._id) }
+        activeOpacity={1}
       >
-        <View style={messageStyle.messageContainer} >
-          <Text>{item.messages[0].name}</Text>
+        <View style={conversationStyle.conversationView}>
+          <View style={conversationStyle.conversationsRowHeader}>
+            <Text>{item.messages[0].name}</Text>
+          </View>
           <Text>{item.messages[0].message}</Text>
         </View>
-        <TouchableOpacity
-          onPressOut={ () => handleDeleteConversation(item._id) }
-        >
-          <Text>X</Text>
-        </TouchableOpacity>
+      </TouchableOpacity>
+    )
+  };
+
+  const renderConversationHiddenItem = ({ item }, rowMap) => {
+    return (
+      <TouchableOpacity 
+        key={item._id} 
+        style={conversationStyle.conversationDeleteBtn} 
+        activeOpacity={0.5}
+      >
+        <Text>X</Text>
+        <Text>Delete</Text>
       </TouchableOpacity>
     )
   };
@@ -65,14 +78,15 @@ const ConversationsComponent = (props) => {
   }, []);
 
   return (
-    <View style={msgComponentStyle.viewContainer}>
-      <FlatList
+    <View style={conversationStyle.conversationsComponent}>
+      <SwipeListView
         data={conversations}
-        renderItem={renderConversation}
-        keyExtractor={ (item) => item._id }
-        onSelect={onSelect} 
+        renderItem={renderConversationItem}
+        renderHiddenItem={renderConversationHiddenItem}
+        rightOpenValue={-100}
+        keyExtractor={ (rowData, index) => index.toString() }
       >
-      </FlatList>
+      </SwipeListView>
     </View>
   );
 };

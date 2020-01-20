@@ -7,8 +7,48 @@ export const msgComponentStyle = StyleSheet.create({
   }
 });
 
+export const conversationStyle = StyleSheet.create({
+  conversationsComponent: {
+    flex: 1
+  },
+  conversationRow: {
+    flex: 1,
+    height: 75,
+    backgroundColor: "white"
+  },
+  conversationView: {
+    flex: 1,
+    width: "100%",
+    borderWidth: 1,
+    borderColor: "green"
+  },
+  conversationsRowHeader: {
+    textAlign: "center",
+    alignSelf: "center",
+    borderWidth: 1,
+    borderColor: "red"
+  },
+  conversationDeleteBtn: {
+    width: 100,
+    height: 75,
+    position: "absolute",
+    backgroundColor: "red",
+    textAlign: "center",
+    justifyContent: "center",
+    right: 0,
+    borderWidth: 2,
+    borderColor: "yellow",
+    height: "100%",
+
+  },
+  conversationDeleteBtnText: {
+
+  }
+});
+
 export const messageStyle = StyleSheet.create({
   messageContainer: {
+    flex: 1,
     position: "relative",
     borderWidth: 2,
     borderColor: "green"
@@ -35,7 +75,8 @@ export const messageStyle = StyleSheet.create({
   },
   messagesInput: {
     width: "100%",
-    justifyContent: "flex-end",
+    position: "relative",
+    bottom: "0%",
     height: 50,
     borderWidth: 2,
     borderColor: "red",
