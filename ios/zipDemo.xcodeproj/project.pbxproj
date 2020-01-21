@@ -18,6 +18,10 @@
 		2DCD954D1E0B4F2C00145EB5 /* zipDemoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* zipDemoTests.m */; };
 		43F1197A28A43BF0A9BD3415 /* libPods-zipDemo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E0BE834C01ABACEB78823FB /* libPods-zipDemo.a */; };
 		86F8C89E609179EA2B5B952E /* libPods-zipDemo-tvOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E3B26E58AAE8F8724857CFA2 /* libPods-zipDemo-tvOS.a */; };
+		961254C123D7A0DB0043628F /* Config.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 961254C023D7A0DB0043628F /* Config.xcconfig */; };
+		961254C223D7A0DB0043628F /* Config.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 961254C023D7A0DB0043628F /* Config.xcconfig */; };
+		961254C323D7A0DB0043628F /* Config.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 961254C023D7A0DB0043628F /* Config.xcconfig */; };
+		961254C423D7A0DB0043628F /* Config.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 961254C023D7A0DB0043628F /* Config.xcconfig */; };
 		9620A45B23C5F1FA002F7800 /* main.jsbundle in Resources */ = {isa = PBXBuildFile; fileRef = 9620A45A23C5F1FA002F7800 /* main.jsbundle */; };
 		D10A0106358D8573E69F75BA /* libPods-zipDemoTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E824A76E0E3B4306B873D70E /* libPods-zipDemoTests.a */; };
 		E3ACFDBAD1F8E717879CB90E /* libPods-zipDemo-tvOSTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1A7156AC1D4341FC8E1C9215 /* libPods-zipDemo-tvOSTests.a */; };
@@ -60,6 +64,7 @@
 		6AE9502077ECBBCBDBE49F24 /* Pods-zipDemo-tvOSTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-zipDemo-tvOSTests.release.xcconfig"; path = "Target Support Files/Pods-zipDemo-tvOSTests/Pods-zipDemo-tvOSTests.release.xcconfig"; sourceTree = "<group>"; };
 		7CB6002678DFED8A04938EAE /* Pods-zipDemoTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-zipDemoTests.release.xcconfig"; path = "Target Support Files/Pods-zipDemoTests/Pods-zipDemoTests.release.xcconfig"; sourceTree = "<group>"; };
 		8C3855382ECF4AF8FF077C58 /* Pods-zipDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-zipDemo.release.xcconfig"; path = "Target Support Files/Pods-zipDemo/Pods-zipDemo.release.xcconfig"; sourceTree = "<group>"; };
+		961254C023D7A0DB0043628F /* Config.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Config.xcconfig; sourceTree = "<group>"; };
 		9620A45A23C5F1FA002F7800 /* main.jsbundle */ = {isa = PBXFileReference; lastKnownFileType = text; path = main.jsbundle; sourceTree = "<group>"; };
 		AECD80D53EE29BEA061EB495 /* Pods-zipDemo-tvOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-zipDemo-tvOS.release.xcconfig"; path = "Target Support Files/Pods-zipDemo-tvOS/Pods-zipDemo-tvOS.release.xcconfig"; sourceTree = "<group>"; };
 		C3AC575A236524AD290BAB07 /* Pods-zipDemo-tvOSTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-zipDemo-tvOSTests.debug.xcconfig"; path = "Target Support Files/Pods-zipDemo-tvOSTests/Pods-zipDemo-tvOSTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -175,6 +180,7 @@
 		83CBB9F61A601CBA00E9B192 = {
 			isa = PBXGroup;
 			children = (
+				961254C023D7A0DB0043628F /* Config.xcconfig */,
 				13B07FAE1A68108700A75B9A /* zipDemo */,
 				832341AE1AAA6A7D00B99B32 /* Libraries */,
 				00E356EF1AD99517003FC87E /* zipDemoTests */,
@@ -230,6 +236,7 @@
 				13B07F8C1A680F5B00A75B9A /* Frameworks */,
 				13B07F8E1A680F5B00A75B9A /* Resources */,
 				00DD1BFF1BD5951E006B06BC /* Bundle React Native code and images */,
+				11AEE51E1BF1FD1B8B6CCB71 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -330,6 +337,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				961254C223D7A0DB0043628F /* Config.xcconfig in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -337,6 +345,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				961254C123D7A0DB0043628F /* Config.xcconfig in Resources */,
 				9620A45B23C5F1FA002F7800 /* main.jsbundle in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
 				13B07FBD1A68108700A75B9A /* LaunchScreen.xib in Resources */,
@@ -347,6 +356,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				961254C323D7A0DB0043628F /* Config.xcconfig in Resources */,
 				2D02E4BD1E0B4A84006451C7 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -355,6 +365,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				961254C423D7A0DB0043628F /* Config.xcconfig in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -395,6 +406,24 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		11AEE51E1BF1FD1B8B6CCB71 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-zipDemo/Pods-zipDemo-resources.sh",
+				"${PODS_ROOT}/GoogleMaps/Maps/Frameworks/GoogleMaps.framework/Resources/GoogleMaps.bundle",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GoogleMaps.bundle",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-zipDemo/Pods-zipDemo-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		2D02E4CB1E0B4B27006451C7 /* Bundle React Native Code And Images */ = {
@@ -631,6 +660,9 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEAD_CODE_STRIPPING = NO;
 				INFOPLIST_FILE = zipDemo/Info.plist;
+				INFOPLIST_OTHER_PREPROCESSOR_FLAGS = "";
+				INFOPLIST_PREFIX_HEADER = "";
+				INFOPLIST_PREPROCESS = NO;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = (
 					"$(inherited)",
@@ -650,6 +682,9 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CURRENT_PROJECT_VERSION = 1;
 				INFOPLIST_FILE = zipDemo/Info.plist;
+				INFOPLIST_OTHER_PREPROCESSOR_FLAGS = "";
+				INFOPLIST_PREFIX_HEADER = "";
+				INFOPLIST_PREPROCESS = NO;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = (
 					"$(inherited)",
@@ -774,6 +809,7 @@
 		};
 		83CBBA201A601CBA00E9B192 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 961254C023D7A0DB0043628F /* Config.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
@@ -818,6 +854,9 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				INFOPLIST_OTHER_PREPROCESSOR_FLAGS = "";
+				INFOPLIST_PREFIX_HEADER = "";
+				INFOPLIST_PREPROCESS = NO;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -827,6 +866,7 @@
 		};
 		83CBBA211A601CBA00E9B192 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 961254C023D7A0DB0043628F /* Config.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
@@ -864,6 +904,9 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				INFOPLIST_OTHER_PREPROCESSOR_FLAGS = "";
+				INFOPLIST_PREFIX_HEADER = "";
+				INFOPLIST_PREPROCESS = NO;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;

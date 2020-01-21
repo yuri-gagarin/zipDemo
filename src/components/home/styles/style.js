@@ -70,17 +70,34 @@ export const topHomeNavStyles = StyleSheet.create({
 // END TopHomeNavbar styles //
 // MapScreen styles //
 export const mapScreenStyles = StyleSheet.create({
-  mapContainer: {
-    flex: 1,
-    height: 500,
-    borderWidth: 2,
-    borderColor: "blue",
-
-  },
-  mapLogo: {
+  mapView: {
+    position: "absolute",
+    top: 75,
+    left: "0%",
     height: 400,
     width: "100%",
-    overflow: "hidden"
-  }
+    justifyContent: 'flex-end',
+    alignItems: 'center'
+  },
+  mapLogoContainer: {
+    flex: 1,
+    flexDirection: "column",
+    borderWidth: 2,
+    borderColor: "green"
+  },
+  mapLogo: {
+    overflow: "visible",
+    justifyContent: "center",
+    alignItems: "center",
+    height: 100,
+    width: 100
+  },
+  mapContainer: {
+    ...StyleSheet.absoluteFillObject,
+    borderWidth: 2,
+    backgroundColor: "red",
+    borderColor: "blue",
+  },
+  
 });
 // END MapScreen styles //

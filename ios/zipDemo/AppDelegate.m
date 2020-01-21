@@ -10,11 +10,18 @@
 #import <React/RCTBridge.h>
 #import <React/RCTBundleURLProvider.h>
 #import <React/RCTRootView.h>
+#import <ReactNativeConfig.h>
+
+#import <GoogleMaps/GoogleMaps.h>
+#import "ReactNativeConfig.h"
+
 
 @implementation AppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+  NSString *googMapsToken = [ReactNativeConfig envFor:@"GOOG_MAPS_TOKEN"];
+  [GMSServices provideAPIKey:googMapsToken];
   RCTBridge *bridge = [[RCTBridge alloc] initWithDelegate:self launchOptions:launchOptions];
   RCTRootView *rootView = [[RCTRootView alloc] initWithBridge:bridge
                                                    moduleName:@"zipDemo"

@@ -1,6 +1,6 @@
 import React from "react";
 import { View, Text, Image } from "react-native";
-import MapView from  "react-native-maps";
+import MapView, { PROVIDER_GOOGLE } from  "react-native-maps";
 // styles and images imports //
 import { mapScreenStyles } from "./styles/style";
 import { mapDefault } from "../../images/imageIndex";
@@ -16,14 +16,14 @@ const RegionMapView = (props) => {
   };
 
   return (
-    <View style={mapScreenStyles.mapContainer}>
-      <Image
-        style={mapScreenStyles.mapLogo}
-        source={mapDefault}
-      />
-        
+    <View style={mapScreenStyles.mapView}>
+      <MapView 
+        style={mapScreenStyles.mapContainer}
+        region={initialRegion}
+        provider={PROVIDER_GOOGLE}
+      />  
     </View>
-  )
+  );
 };
 
 export default RegionMapView;
