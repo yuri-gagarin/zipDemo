@@ -6,6 +6,7 @@ import TopHomeNavbar from "./TopHomeNavbar";
 import MapScreeen from "./MapScreen";
 // styles and images //
 import { homeScreenStyles } from "./styles/style";
+import MainFooter from "../footers/MainFooter";
 
 
 /*
@@ -20,29 +21,9 @@ const HomeScreenComponent = (props) => {
         navigation={navigation}
       />
       <MapScreeen />
-      <View style={{flex: 1, flexDirection: "row"}}>
-        <TouchableHighlight 
-          style={{flex: 1, flexDirection: "row", borderWidth: 2, borderColor: "red", justifyContent: "center", alignItems: "center"}}
-          underlayColor={"red"}
-          onPress={() => {}}
-        >
-          <Text>Press</Text>
-        </TouchableHighlight>
-        <TouchableHighlight 
-          style={{flex: 1, flexDirection: "row", borderWidth: 2, borderColor: "red", justifyContent: "center", alignItems: "center"}}
-          underlayColor={"red"}
-          onPress={() => {}}
-        >
-          <Text>Press</Text>
-        </TouchableHighlight>
-        <TouchableHighlight 
-          style={{flex: 1, flexDirection: "row", borderWidth: 2, borderColor: "red", justifyContent: "center", alignItems: "center"}}
-          underlayColor={"red"}
-          onPress={() => {}}
-        >
-          <Text>Press</Text>
-        </TouchableHighlight>
-      </View>
+      <MainFooter 
+        navigation={navigation}
+      />
     </SafeAreaView>
   );
 };

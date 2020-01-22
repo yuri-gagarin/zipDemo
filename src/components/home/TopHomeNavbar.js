@@ -1,5 +1,5 @@
 import React from "react";
-import { View, Text, TouchableOpacity } from "react-native";
+import { View, Text, TouchableOpacity, TouchableHighlight } from "react-native";
 import PropTypes from "prop-types";
 // styles and images //
 import { topHomeNavStyles } from "./styles/style";
@@ -17,19 +17,25 @@ const TopHomeNavbar = (props) => {
   };
   return (
     <View style={topHomeNavStyles.mainNav}>
-      <TouchableOpacity 
+      <TouchableHighlight
         style={topHomeNavStyles.messagesButton}
-        onPressOut={openMessages}
+        underlayColor={"red"}
+        onPress={openMessages}
       >
-        <Text style={topHomeNavStyles.messagesButtonText}>Messages</Text>
-        <Text style={topHomeNavStyles.messagesCounter}>{newMessages}</Text>
-      </TouchableOpacity>
-      <TouchableOpacity 
+        <View>
+          <Text style={topHomeNavStyles.messagesButtonText}>Messages</Text>
+          <Text style={topHomeNavStyles.messagesCounter}>{newMessages}</Text>
+        </View>
+      </TouchableHighlight>
+      <TouchableHighlight
         style={topHomeNavStyles.profileButton}
-        onPressOut={openProfile}
+        underlayColor={"red"}
+        onPress={openProfile}
       >
-        <Text style={topHomeNavStyles.profileButtonText}>Profile</Text>
-      </TouchableOpacity>
+        <View>
+          <Text style={topHomeNavStyles.profileButtonText}>Profile</Text>
+        </View>
+      </TouchableHighlight>
     </View>
   );
 };
