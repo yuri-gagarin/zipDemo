@@ -10,6 +10,7 @@ import createAnimatedSwitchNavigator from "react-navigation-animated-switch";
 // Component Imports //
 import AuthLoadingScreenComponent from "../components/loading/AuthLoadingScreenComponent";
 import ConversationsComponent from "../components/messages/ConversationsComponent";
+import CityScreenComponent from "../components/city_screen/CityScreenComponent";
 import HomeScreenComponent from "../components/home/HomeScreenComponent";
 import LoginComponent from "../components/auth/LoginComponent";
 import MessageContainer from "../components/messages/MessageContainer";
@@ -28,6 +29,9 @@ const appRoutes = {
   conversationsScreen: {
     screen: ConversationsComponent
   },
+  cityScreen: {
+    screen: CityScreenComponent
+  },
   messageScreen: {
     screen: MessageContainer
   },
@@ -37,6 +41,7 @@ const appRoutes = {
 };
 const appStackConfig = {
   // app routes config here //
+  initialRouteName: "cityScreen",
   headerTintColor: "black",
   headerLeft: () => {
     return (

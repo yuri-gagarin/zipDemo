@@ -27,7 +27,12 @@ const HomeScreenComponent = (props) => {
     </SafeAreaView>
   );
 };
-
+// react-navigation options //
+HomeScreenComponent.navigationOptions = {
+  title: "Home",
+  //headerLeft: () => null
+};
+// PropTypes checking //
 HomeScreenComponent.propTypes = {
   navigation: PropTypes.object.isRequired
 };
