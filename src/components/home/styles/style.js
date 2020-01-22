@@ -2,19 +2,18 @@ import { StyleSheet } from "react-native";
 
 // General HomeScreenComponent styles //
 export const homeScreenStyles = StyleSheet.create({
-  mainScreeen: {
-    flex: 1
+  mainScreen: {
+    flex: 1,
   }
 });
 // END HomeScreenComponents styles //
 // TopHomeNavbar styles //
 export const topHomeNavStyles = StyleSheet.create({
   mainNav: {
-    height: 75,
+    flex: 1,
     width: "100%",
     position: "relative",
-    borderWidth: 2,
-    borderColor: "red"
+    backgroundColor: "#F4FBF9",
   },
   profileButton: {
     height: 40,
@@ -23,12 +22,13 @@ export const topHomeNavStyles = StyleSheet.create({
     right: "5%",
     top: "20%",
     borderWidth: 2,
-    borderColor: "green",
+    borderColor: "#F13C20",
     borderRadius: 25
   },
   profileButtonText: {
     textAlign: "center",
-    marginTop: "12%"
+    marginTop: "12%",
+    color: "#4056A1"
   },
   messagesButton: {
     height: 40,
@@ -37,20 +37,21 @@ export const topHomeNavStyles = StyleSheet.create({
     left: "5%",
     top: "20%",
     borderWidth: 2,
-    borderColor: "green",
+    borderColor: "#F13C20",
     borderRadius: 20
   },
   messagesButtonText: {
     textAlign: "center",
     marginTop: "7%",
     paddingLeft: 5,
-    paddingRight: 10
+    paddingRight: 10,
+    color: "#4056A1"
   },
   messagesCounter: {
     borderWidth: 2,
     height: 50,
     width: 50,
-    borderColor: "red",
+    borderColor: "#4056A1",
     backgroundColor: "white",
     overflow: "hidden",
     borderRadius: 25,
@@ -71,32 +72,16 @@ export const topHomeNavStyles = StyleSheet.create({
 // MapScreen styles //
 export const mapScreenStyles = StyleSheet.create({
   mapView: {
-    position: "absolute",
-    top: 75,
-    left: "0%",
-    height: 400,
+    flex: 8,
     width: "100%",
+    borderWidth: 3,
+    borderColor: "#C5CBE3",
     justifyContent: 'flex-end',
-    alignItems: 'center'
-  },
-  mapLogoContainer: {
-    flex: 1,
-    flexDirection: "column",
-    borderWidth: 2,
-    borderColor: "green"
-  },
-  mapLogo: {
-    overflow: "visible",
-    justifyContent: "center",
-    alignItems: "center",
-    height: 100,
-    width: 100
+    alignItems: 'center',
+    position: "relative"
   },
   mapContainer: {
-    ...StyleSheet.absoluteFillObject,
-    borderWidth: 2,
-    backgroundColor: "red",
-    borderColor: "blue",
+    ...StyleSheet.absoluteFillObject
   },
   
 });

@@ -6,6 +6,9 @@ import { mapScreenStyles } from "./styles/style";
 import { mapDefault } from "../../images/imageIndex";
 // redux imports //
 
+
+
+
 const RegionMapView = (props) => {
 
   const initialRegion = {
