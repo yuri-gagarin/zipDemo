@@ -54,7 +54,7 @@ const LoginComponent = (props) => {
       .then((value) => {
         console.info(value);
         console.info("Navigating")
-        navigation.navigate("homeScreen");
+        navigation.navigate("cityScreen");
       })  
       .catch((error) => {
         console.error(error);
