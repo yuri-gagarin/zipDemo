@@ -5,7 +5,7 @@ import PropTypes from "prop-types";
 import { StackActions, NavigationActions } from 'react-navigation';
 // styles and images imports //
 import { lvivDefault } from "../../images/imageIndex";
-import { cityLogoContainerStyle, navButtonsContainerStyle } from "./styles/styles";
+import { cityLogoContainerStyle, navBtnsContainerStyle } from "./styles/styles";
 
 // redux imports //
 const CityScreenComponent = (props) => {
@@ -27,26 +27,28 @@ const CityScreenComponent = (props) => {
 
   return (
     <SafeAreaView style={{flex: 1, borderWidth: 2, borderColor: "red"}}>
-      <View style={{flex: 4, backgroundColor: "white", borderWidth: 2, borderColor: "blue", justifyContent: "center", alignItems: "center"}}>
-        <Text style={{marginBottom: "10%", fontSize: 25}}>Welcome</Text>
-        <View style={{width: 200, height: 200, justifyContent: "center", borderWidth: 5, borderRadius: 50, overflow: "hidden"}}>
+      <View style={cityLogoContainerStyle.cityLogoContainer}>
+        <Text style={cityLogoContainerStyle.headerText}>Welcome</Text>
+        <View style={cityLogoContainerStyle.cityLogo}>
           <Image 
-            style={{height: 200, width: 200 }}
+            style={cityLogoContainerStyle.cityImage}
             source={lvivDefault}
           />
         </View>
-        <Text style={{marginTop: "10%"}}>Lviv</Text>
+        <Text style={cityLogoContainerStyle.footerText}>Lviv</Text>
         
       </View>
-      <View style={{flex: 2, borderWidth: 2, borderColor: "green", backgroundColor: "grey", justifyContent: "center", alignItems: "center" }}>
+      <View style={navBtnsContainerStyle.navBtnsContainer}>
         <TouchableHighlight 
-          style={{width: 150, height: 70, borderWidth: 2, borderColor: "white", alignItems: "center", justifyContent: "center"}}
+          style={navBtnsContainerStyle.forwardBtn}
+          underlayColor={"grey"}
           onPressOut={navigateHome}
         >
           <Text>Forward</Text>
         </TouchableHighlight>
         <TouchableHighlight 
-          style={{width: 150, height: 70, borderWidth: 2, borderColor: "white", alignItems: "center", justifyContent: "center"}}
+          style={navBtnsContainerStyle.otherCityBtn}
+          underlayColor={"grey"}
           onPressOut={navigateHome}
         >
           <Text>Other City?</Text>

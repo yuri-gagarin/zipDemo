@@ -23,7 +23,8 @@ export const cityLogoContainerStyle = StyleSheet.create({
     overflow: "hidden"
   },
   cityImage: {
-
+    height: 200,
+    width: 200
   },
   footerText: {
     marginTop: "10%",
@@ -32,6 +33,36 @@ export const cityLogoContainerStyle = StyleSheet.create({
   }
 });
 
-export const navButtonsContainerStyle = StyleSheet.create({
+export const navBtnsContainerStyle = StyleSheet.create({
+  navBtnsContainer: {
+    flex: 2, 
+    borderWidth: 2, 
+    borderColor: "green", 
+    backgroundColor: "white", 
+    justifyContent: "space-evenly", 
+    alignItems: "center" 
+  },
+  forwardBtn: {
+    width: 150, 
+    height: 70, 
+    borderWidth: 2, 
+    borderColor: "grey", 
+    alignItems: "center", 
+    justifyContent: "center"
+  },
+  forwardBtnText: {
+    color: "black"
+  },
+  otherCityBtn: {
+    width: 150, 
+    height: 70, 
+    borderWidth: 2, 
+    borderColor: "grey", 
+    alignItems: "center", 
+    justifyContent: "center"
+  },
+  otherCityBtnText: {
+    color: "black"
+  }
 
 });
