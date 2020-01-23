@@ -5,7 +5,7 @@ import PropTypes from "prop-types";
 import { StackActions, NavigationActions } from 'react-navigation';
 // styles and images imports //
 import { lvivDefault } from "../../images/imageIndex";
-import {} from "./styles/styles";
+import { cityLogoContainerStyle, navButtonsContainerStyle } from "./styles/styles";
 
 // redux imports //
 const CityScreenComponent = (props) => {
