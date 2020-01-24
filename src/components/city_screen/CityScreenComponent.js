@@ -26,7 +26,7 @@ const CityScreenComponent = (props) => {
   };
 
   return (
-    <SafeAreaView style={{flex: 1, borderWidth: 2, borderColor: "red"}}>
+    <SafeAreaView style={{flex: 1}}>
       <View style={cityLogoContainerStyle.cityLogoContainer}>
         <Text style={cityLogoContainerStyle.headerText}>Welcome</Text>
         <View style={cityLogoContainerStyle.cityLogo}>
@@ -44,14 +44,14 @@ const CityScreenComponent = (props) => {
           underlayColor={"grey"}
           onPressOut={navigateHome}
         >
-          <Text>Forward</Text>
+          <Text style={navBtnsContainerStyle.forwardBtnText}>Forward</Text>
         </TouchableHighlight>
         <TouchableHighlight 
           style={navBtnsContainerStyle.otherCityBtn}
           underlayColor={"grey"}
           onPressOut={navigateHome}
         >
-          <Text>Other City?</Text>
+          <Text style={navBtnsContainerStyle.otherCityBtnText}>Other City?</Text>
         </TouchableHighlight>
       </View>
     </SafeAreaView>

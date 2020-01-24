@@ -3,23 +3,27 @@ import { StyleSheet } from "react-native";
 export const cityLogoContainerStyle = StyleSheet.create({
   cityLogoContainer: {
     flex: 4, 
-    backgroundColor: "white", 
-    borderWidth: 2, 
-    borderColor: "blue", 
+    backgroundColor: "#65CCB8", 
+    //borderWidth: 2, 
+    //borderColor: "blue", 
     justifyContent: "center", 
     alignItems: "center"
   },
   headerText: {
-    marginBottom: "10%", 
+    marginBottom: "5%", 
     fontSize: 25,
-    color: "black"
+    fontFamily: "Georgia",
+    fontWeight: "bold",
+    color: "white"
+
   },
   cityLogo: {
     width: 200, 
     height: 200, 
     justifyContent: "center", 
-    borderWidth: 5, 
+    borderWidth: 2, 
     borderRadius: 50, 
+    borderColor: "white",
     overflow: "hidden"
   },
   cityImage: {
@@ -27,9 +31,11 @@ export const cityLogoContainerStyle = StyleSheet.create({
     width: 200
   },
   footerText: {
-    marginTop: "10%",
-    fontSize: 20,
-    color: "black"
+    marginTop: "5%",
+    fontSize: 75,
+    fontFamily: "Arial",
+    fontWeight: "bold",
+    color: "white"
   }
 });
 
@@ -45,24 +51,28 @@ export const navBtnsContainerStyle = StyleSheet.create({
   forwardBtn: {
     width: 150, 
     height: 70, 
-    borderWidth: 2, 
+    borderWidth: 2,
+    borderRadius: 20, 
     borderColor: "grey", 
     alignItems: "center", 
     justifyContent: "center"
   },
   forwardBtnText: {
-    color: "black"
+    color: "black",
+    fontSize: 20
   },
   otherCityBtn: {
     width: 150, 
     height: 70, 
     borderWidth: 2, 
+    borderRadius: 20, 
     borderColor: "grey", 
     alignItems: "center", 
     justifyContent: "center"
   },
   otherCityBtnText: {
-    color: "black"
+    color: "black",
+    fontSize: 20
   }
 
 });
