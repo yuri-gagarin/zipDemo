@@ -80,8 +80,13 @@ project.ext.react = [
     enableHermes: false,  // clean and rebuild if changing
 ]
 
+project.ext.envConfigFiles = [
+    debug: ".env.config",
+    release: ".env.production",
+]
+
 apply from: "../../node_modules/react-native/react.gradle"
-//apply from: project(':react-native-config').projectDir.getPath() + "/dotenv.gradle"
+apply from: project(':react-native-config').projectDir.getPath() + "/dotenv.gradle"
 
 /**
  * Set this to true to create two separate APKs instead of one:
@@ -184,7 +189,7 @@ dependencies {
     implementation "com.facebook.react:react-native:+"  // From node_modules
     implementation 'androidx.appcompat:appcompat:1.1.0-rc01' // From React Navigation
     implementation 'androidx.swiperefreshlayout:swiperefreshlayout:1.1.0-alpha02' // From React Navigation
-    
+
     implementation(project(':react-native-maps')){
         exclude group: 'com.google.android.gms', module: 'play-services-base'
         exclude group: 'com.google.android.gms', module: 'play-services-maps'
