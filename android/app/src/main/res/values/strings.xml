@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">zipDemo</string>
+    <string name="map_token">@string/GOOG_MAPS_TOKEN</string>
 </resources>
