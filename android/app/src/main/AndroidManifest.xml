@@ -2,7 +2,8 @@
   package="com.zipdemo">
 
     <uses-permission android:name="android.permission.INTERNET" />
-    
+    <!-- Camera permission for qr codes -->
+    <uses-permission android:name="android.permission.CAMERA" />
     <application
       android:name=".MainApplication"
       android:label="@string/app_name"
