@@ -14,8 +14,8 @@ const MainFooter = (props) => {
   const openReservations = () => {
 
   };
-  const openAdditional = () => {
-
+  const toggleReserve = () => {
+    navigation.navigate("cameraScreen");
   };
 
   return (
@@ -30,16 +30,16 @@ const MainFooter = (props) => {
       <TouchableHighlight 
         style={mainFooterStyle.mainFooterBtn}
         underlayColor={"red"}
-        onPress={openStores}
+        onPress={toggleReserve}
       >
-        <Text>Stores</Text>
+        <Text>Reserve</Text>
       </TouchableHighlight>
       <TouchableHighlight 
         style={mainFooterStyle.mainFooterBtn}
         underlayColor={"red"}
-        onPress={openAdditional}
+        onPress={openStores}
       >
-        <Text>Additional</Text>
+        <Text>Stores</Text>
       </TouchableHighlight>
     </View>
   );

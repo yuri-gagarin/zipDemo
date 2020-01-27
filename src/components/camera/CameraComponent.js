@@ -1,5 +1,5 @@
 import React from "react";
-import { SafeAreaView, View } from "react-native";
+import { SafeAreaView, View, Text } from "react-native";
 import PropTypes from "prop-types";
 // additional imports and dependencies //
 import { RNCamera } from "react-native-camera";
@@ -27,6 +27,14 @@ const CameraComponent = (props) => {
   const takePicture = (camera) => {
     // take picture implementation here //
     console.info("taking picture");
+    const options = { quality:  1.0, base64: true };
+    return camera.takePictureAsync(options)
+      .then(() => {
+        console.info(data);
+      })
+      .catch((error) => {
+        console.error(error);
+    }); 
   };
 
   return (
@@ -37,6 +45,7 @@ const CameraComponent = (props) => {
         type={cameraType}
         flashMode={flashMode}
         androidCameraPermissionOptions={androidPermissions}
+        captureAudio={false}
       >
       {
         ({ camera, status, recordAudioPermissionStatus}) => {
@@ -44,8 +53,10 @@ const CameraComponent = (props) => {
             return <CameraLoadingScreen />
           }
           return (
-            <View style={{flex: 1, flexDirection: "row", justifyContent: "center"}}>
-              <TouchableOpacity onPress={() => takePicture(camera)}>
+            <View style={{flex: 1, flexDirection: "row", justifyContent: "center", borderWidth: 2, borderColor: "red" }}>
+              <TouchableOpacity 
+                style={{borderWidth: 2, borderColor: "green", width: 100, height: 50, justifyContent: "center", alignItems: "center", alignSelf: "flex-end"}}
+                onPress={() => takePicture(camera)}>
                 <Text style={{fontSize: 14}}>Snap</Text>
               </TouchableOpacity>
             </View>
@@ -58,7 +69,10 @@ const CameraComponent = (props) => {
 };
 
 // react-navigation options //
-
+CameraComponent.navigationOptions = {
+};
 // PropTypes checking //
-
+CameraComponent.propTypes = {
+  navigation: PropTypes.object.isRequired
+};
 export default CameraComponent;

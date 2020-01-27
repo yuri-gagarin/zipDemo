@@ -9,6 +9,7 @@ import createAnimatedSwitchNavigator from "react-navigation-animated-switch";
 
 // Component Imports //
 import AuthLoadingScreenComponent from "../components/loading/AuthLoadingScreenComponent";
+import CameraComponet from "../components/camera/CameraComponent";
 import ConversationsComponent from "../components/messages/ConversationsComponent";
 import CityScreenComponent from "../components/city_screen/CityScreenComponent";
 import HomeScreenComponent from "../components/home/HomeScreenComponent";
@@ -25,6 +26,9 @@ import { Transition } from "react-native-reanimated";
 const appRoutes = {
   homeScreen: {
     screen: HomeScreenComponent
+  },
+  cameraScreen: {
+    screen: CameraComponet
   },
   conversationsScreen: {
     screen: ConversationsComponent
