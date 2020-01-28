@@ -1,33 +1,42 @@
-import { StyleSheet } from "react-native";
+import { Dimensions, StyleSheet } from "react-native";
 
 // some constants for animations //
 export const DEFAULT_LOGO_HEIGHT = 150;
 export const MIN_LOGO_HEIGHT = 50;
+
+const SCREEN_HEIGHT = Dimensions.get('window').height;
+const SCREEN_WIDTH = Dimensions.get('window').width;
+
+console.info(`Height is ${SCREEN_HEIGHT}, Width is ${SCREEN_WIDTH}`)
 // LoginComponent styling //
 export const loginStyles = StyleSheet.create({
   loginView: {
-    flex: 1,
+    flexGrow: 1,
+    justifyContent: "space-between",
+    width: SCREEN_WIDTH,
     flexDirection: "column",
     alignItems: "center",
     borderWidth: 2,
-    borderColor: "red"
+    borderColor: "yellow",
+    //paddingBottom: 700
+    
   },
   logo: {
-    flex: 1,
+    //flex: 1,
     width: 150
   },
   title: {
-    flex: 1,
+    //flex: 1,
     fontSize: 36
   },
   emailLabel: {
-    flex: 1,
+    //flex: 1,
     textAlign: "center",
-    marginTop: 40,
-    marginBottom: 10
+    marginTop: "5%",
+    marginBottom: "2%"
   },
   emailInput: {
-    flex: 1,
+    //flex: 1,
     height: 50,
     width: "75%",
     fontSize: 22,
@@ -37,13 +46,13 @@ export const loginStyles = StyleSheet.create({
     borderRadius: 25,
   },
   passwordLabel: {
-    flex: 1,
+    //flex: 1,
     textAlign: "center",
-    marginTop: 25,
-    marginBottom: 10
+    marginTop: "2%",
+    marginBottom: "2%"
   },
   passwordInput: {
-    flex: 1,
+    //flex: 1,
     height: 50,
     width: "75%",
     fontSize: 22,
@@ -53,35 +62,39 @@ export const loginStyles = StyleSheet.create({
     borderRadius: 25,
   },
   loginButton: {
-    flex: 1,
     height: 50,
     width: 100,
-    marginTop: 25,
+    marginTop: "2%",
     borderWidth: 2,
     borderRadius: 20,
-    borderColor: "green"
+    borderColor: "green",
+    justifyContent: "center"
+
   },
   loginButtonText: {
-    flex: 1,
     textAlign: "center",
   },
   goToRegisterBtn: {
-    flex: 1,
-    height: 30,
+    //flex: 1,
+    height: 50,
     width: 120,
-    marginTop: 10,
+    justifyContent: "center",
+    marginTop: "2%",
     borderWidth: 2,
     borderRadius: 20,
     borderColor: "green"
   },
   goToRegisterBtnText: {
-    flex: 1,
-    padding: 5,
+    //flex: 1,
+    //padding: 5,
     textAlign: "center",
     color: "green"
   },
   forgotLogin: {
-    flex: 1,
+    //flex: 1,
+    //justifyContent: "flex-end",
+    //bottom: "10%",
+    marginBottom: "5%",
     height: 20,
     width: "auto",
   }

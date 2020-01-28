@@ -4,15 +4,16 @@ import {
   Image,
   Keyboard,
   KeyboardAvoidingView,
+  ScrollView,
   Text, 
   TouchableOpacity, 
+  TouchableWithoutFeedback,
   TextInput, 
   View
   } from "react-native";
 import AsyncStorage from '@react-native-community/async-storage';
 // Additional Components //
 import PasswordToggle from "./PasswordToggle";
-//import {} from "react-native-ke"
 // Styles and Images //
 import { loginStyles, DEFAULT_LOGO_HEIGHT, MIN_LOGO_HEIGHT } from "./styles/styles";
 import { mainLogoImg } from "../../images/imageIndex";
@@ -33,37 +34,39 @@ const LoginComponent = (props) => {
 
   const keyboardWillShow = (e) => {
     Animated.parallel([
-      Animated.timing(keyboardHeight, {
-        duration: 500,
+      Animated.spring(keyboardHeight, {
+        //duration: 500,
         toValue: e.endCoordinates.height
       }),
-      Animated.timing(logoHeight, {
-        duration: 500,
+      Animated.spring(logoHeight, {
+        //duration: 500,
         toValue: MIN_LOGO_HEIGHT
       })
     ]).start();
+    console.log(e.endCoordinates.height);
   };
   const keyboardWilHide = (e) => {
     Animated.parallel([
-      Animated.timing(keyboardHeight, {
-        duration: 1500,
+      Animated.spring(keyboardHeight, {
+        //duration: 500,
         toValue: 0
       }),
-      Animated.timing(logoHeight, {
-        duration: 1500,
+      Animated.spring(logoHeight, {
+        //duration: 500,
         toValue: DEFAULT_LOGO_HEIGHT
       })
     ]).start();
+    //console.log(keyboardHeight);
   };
 
   
 
   useEffect(() => {
-    console.log("mounting component and set properties");
+    //console.log("mounting component and set properties");
     keyboardWillShowEvent = Keyboard.addListener("keyboardDidShow", keyboardWillShow);
     keyboardWillHideEvent = Keyboard.addListener("keyboardDidHide", keyboardWilHide);
     return function cleanupComponent() {
-      console.log("unmounted and cleaning up");
+      //console.log("unmounted and cleaning up");
       keyboardWillShowEvent.remove();
       keyboardWillHideEvent.remove();
     }
@@ -109,44 +112,55 @@ const LoginComponent = (props) => {
   };
 
   return (
-    <Animated.View style={{...loginStyles.loginView, paddingBottom: keyboardHeight}}>
-      <Image source={mainLogoImg} style={{...loginStyles.logo, height: DEFAULT_LOGO_HEIGHT}}></Image>
-      <Text style={loginStyles.title}>Login</Text>
-      <Text style={loginStyles.emailLabel}>Email</Text>
-      <TextInput 
-        style={loginStyles.emailInput}
-        placeholder={"email here"}
-        onChangeText={ (text) => updateEmail(text) }
-      />
-      <Text style={loginStyles.passwordLabel}>Password</Text>
-      <PasswordToggle
-        displayed={renderShowButton()}
-        togglePassVisibility={togglePassVisibility}
-      />
-      <TextInput 
-        style={loginStyles.passwordInput}
-        onChangeText={ (text) => updatePassword(text) }
-        secureTextEntry={loginState.passwordHidden}
-      />
-      <TouchableOpacity 
-        style={loginStyles.loginButton}
-        onPressOut={handleLogin}
-      >
-        <Text style={loginStyles.loginButtonText}>Login</Text>
-      </TouchableOpacity>
-      <TouchableOpacity 
-        style={loginStyles.goToRegisterBtn}
-        onPress={ goToRegistration }
-      >
-        <Text style={loginStyles.goToRegisterBtnText}>New? Register</Text>
-      </TouchableOpacity>
-      <TouchableOpacity 
-        style={loginStyles.forgotLogin}
-        onPress={ (props) => goToRegistration(props) }
-      >
-        <Text>Forgot Login or Password?</Text>
-      </TouchableOpacity>
-    </Animated.View>
+    <ScrollView
+      contentContainerStyle={loginStyles.loginView}
+      bounces={false}
+      >   
+        <View style={{flex: 1, justifyContent: "flex-start", marginTop: "10%"}}>
+          <Image source={mainLogoImg} style={{...loginStyles.logo, height: DEFAULT_LOGO_HEIGHT}}></Image>
+        </View>
+        <View style={{flex: 1, justifyContent: "flex-start", alignItems: "center", width: "100%"}}>
+          <Text style={loginStyles.title}>Login</Text>
+          <Text style={loginStyles.emailLabel}>Email</Text>
+          <TextInput 
+            style={loginStyles.emailInput}
+            textAlign={"center"}
+            placeholder={"email"}
+            onChangeText={ (text) => updateEmail(text) }
+          />
+          <Text style={loginStyles.passwordLabel}>Password</Text>
+          <PasswordToggle
+            displayed={renderShowButton()}
+            togglePassVisibility={togglePassVisibility}
+          />
+          <TextInput 
+            style={loginStyles.passwordInput}
+            onChangeText={ (text) => updatePassword(text) }
+            secureTextEntry={loginState.passwordHidden}
+          />
+          <TouchableOpacity 
+            style={loginStyles.loginButton}
+            onPressOut={handleLogin}
+          >
+            <Text style={loginStyles.loginButtonText}>Login</Text>
+          </TouchableOpacity>
+
+        
+          <TouchableOpacity 
+            style={loginStyles.goToRegisterBtn}
+            onPress={ goToRegistration }
+          >
+            <Text style={loginStyles.goToRegisterBtnText}>New? Register</Text>
+          </TouchableOpacity>
+        </View>
+       
+        <View style={{flex: 1, justifyContent: "flex-end" }}>
+          <TouchableOpacity style={loginStyles.forgotLogin}>
+            <Text>Forgot Login or Password?</Text>
+          </TouchableOpacity>
+        </View>
+
+    </ScrollView>
   );
 };
 
