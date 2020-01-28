@@ -12,6 +12,7 @@ import {
   View
   } from "react-native";
 import AsyncStorage from '@react-native-community/async-storage';
+import PropTypes from "prop-types";
 // Additional Components //
 import PasswordToggle from "./PasswordToggle";
 // Styles and Images //
@@ -35,28 +36,16 @@ const LoginComponent = (props) => {
   const keyboardWillShow = (e) => {
     Animated.parallel([
       Animated.spring(keyboardHeight, {
-        //duration: 500,
         toValue: e.endCoordinates.height
-      }),
-      Animated.spring(logoHeight, {
-        //duration: 500,
-        toValue: MIN_LOGO_HEIGHT
       })
     ]).start();
-    console.log(e.endCoordinates.height);
   };
   const keyboardWilHide = (e) => {
     Animated.parallel([
       Animated.spring(keyboardHeight, {
-        //duration: 500,
         toValue: 0
-      }),
-      Animated.spring(logoHeight, {
-        //duration: 500,
-        toValue: DEFAULT_LOGO_HEIGHT
       })
     ]).start();
-    //console.log(keyboardHeight);
   };
 
   
@@ -112,7 +101,8 @@ const LoginComponent = (props) => {
   };
 
   return (
-    <ScrollView
+    <Animated.ScrollView
+      style={{paddingBottom: keyboardHeight}}
       contentContainerStyle={loginStyles.loginView}
       bounces={false}
       >   
@@ -160,12 +150,18 @@ const LoginComponent = (props) => {
           </TouchableOpacity>
         </View>
 
-    </ScrollView>
+    </Animated.ScrollView>
   );
 };
 
+// react-navigation options //
 LoginComponent.navigationOptions = {
   title: "Main Login"
+};
+
+// PropTypes checking //
+LoginComponent.propTypes = {
+  navigation: PropTypes.object.isRequired
 };
 
 

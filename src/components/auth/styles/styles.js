@@ -104,8 +104,10 @@ export const loginStyles = StyleSheet.create({
 // RegistrationComponent styling //
 export const registrationStyles = StyleSheet.create({
   registrationView: {
-    flex: 1,
+    flexGrow: 1,
+    width: SCREEN_WIDTH,
     flexDirection: "column",
+    justifyContent: "space-between",
     alignItems: "center"
   },
   logo: {
@@ -171,8 +173,11 @@ export const registrationStyles = StyleSheet.create({
     paddingTop: "10%"
   },
   goToLoginBtn: {
-    position: "absolute",
-    bottom: "10%"
+    height: 20,
+    marginTop: "10%",
+    marginBottom: "5%",
+    width: "auto"
+
   },
   toToLoginBtnText: {
 
