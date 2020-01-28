@@ -1,6 +1,9 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { 
+  Animated,
   Image,
+  Keyboard,
+  KeyboardAvoidingView,
   Text, 
   TouchableOpacity, 
   TextInput, 
@@ -9,13 +12,17 @@ import {
 import AsyncStorage from '@react-native-community/async-storage';
 // Additional Components //
 import PasswordToggle from "./PasswordToggle";
+//import {} from "react-native-ke"
 // Styles and Images //
-import { loginStyles } from "./styles/styles";
+import { loginStyles, DEFAULT_LOGO_HEIGHT, MIN_LOGO_HEIGHT } from "./styles/styles";
 import { mainLogoImg } from "../../images/imageIndex";
 // helpers and constants //
 import { API_TOKEN } from "../../redux/constants/componentConstants";
 
 const LoginComponent = (props) => {
+  let keyboardWillShowEvent, keyboardWillHideEvent;
+  let keyboardHeight = new Animated.Value(0);
+  let logoHeight = new Animated.Value(DEFAULT_LOGO_HEIGHT);
 
   const initialState = {
     email: "",
@@ -23,6 +30,44 @@ const LoginComponent = (props) => {
     passwordHidden: true
   };
   const [loginState, updateState] = useState(initialState);
+
+  const keyboardWillShow = (e) => {
+    Animated.parallel([
+      Animated.timing(keyboardHeight, {
+        duration: 500,
+        toValue: e.endCoordinates.height
+      }),
+      Animated.timing(logoHeight, {
+        duration: 500,
+        toValue: MIN_LOGO_HEIGHT
+      })
+    ]).start();
+  };
+  const keyboardWilHide = (e) => {
+    Animated.parallel([
+      Animated.timing(keyboardHeight, {
+        duration: 1500,
+        toValue: 0
+      }),
+      Animated.timing(logoHeight, {
+        duration: 1500,
+        toValue: DEFAULT_LOGO_HEIGHT
+      })
+    ]).start();
+  };
+
+  
+
+  useEffect(() => {
+    console.log("mounting component and set properties");
+    keyboardWillShowEvent = Keyboard.addListener("keyboardDidShow", keyboardWillShow);
+    keyboardWillHideEvent = Keyboard.addListener("keyboardDidHide", keyboardWilHide);
+    return function cleanupComponent() {
+      console.log("unmounted and cleaning up");
+      keyboardWillShowEvent.remove();
+      keyboardWillHideEvent.remove();
+    }
+  }, []);
 
   const updateEmail = (text) => {
     updateState({
@@ -52,8 +97,6 @@ const LoginComponent = (props) => {
     const token = "afaketoken";
     AsyncStorage.setItem(API_TOKEN, token)
       .then((value) => {
-        console.info(value);
-        console.info("Navigating")
         navigation.navigate("cityScreen");
       })  
       .catch((error) => {
@@ -66,12 +109,13 @@ const LoginComponent = (props) => {
   };
 
   return (
-    <View style={loginStyles.loginView}>
-      <Image source={mainLogoImg} style={loginStyles.logo}></Image>
+    <Animated.View style={{...loginStyles.loginView, paddingBottom: keyboardHeight}}>
+      <Image source={mainLogoImg} style={{...loginStyles.logo, height: DEFAULT_LOGO_HEIGHT}}></Image>
       <Text style={loginStyles.title}>Login</Text>
       <Text style={loginStyles.emailLabel}>Email</Text>
       <TextInput 
         style={loginStyles.emailInput}
+        placeholder={"email here"}
         onChangeText={ (text) => updateEmail(text) }
       />
       <Text style={loginStyles.passwordLabel}>Password</Text>
@@ -102,7 +146,7 @@ const LoginComponent = (props) => {
       >
         <Text>Forgot Login or Password?</Text>
       </TouchableOpacity>
-    </View>
+    </Animated.View>
   );
 };
 

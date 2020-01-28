@@ -1,25 +1,33 @@
 import { StyleSheet } from "react-native";
 
+// some constants for animations //
+export const DEFAULT_LOGO_HEIGHT = 150;
+export const MIN_LOGO_HEIGHT = 50;
 // LoginComponent styling //
 export const loginStyles = StyleSheet.create({
   loginView: {
     flex: 1,
     flexDirection: "column",
-    alignItems: "center"
+    alignItems: "center",
+    borderWidth: 2,
+    borderColor: "red"
   },
   logo: {
-    height: 150,
+    flex: 1,
     width: 150
   },
   title: {
+    flex: 1,
     fontSize: 36
   },
   emailLabel: {
+    flex: 1,
     textAlign: "center",
     marginTop: 40,
     marginBottom: 10
   },
   emailInput: {
+    flex: 1,
     height: 50,
     width: "75%",
     fontSize: 22,
@@ -29,11 +37,13 @@ export const loginStyles = StyleSheet.create({
     borderRadius: 25,
   },
   passwordLabel: {
+    flex: 1,
     textAlign: "center",
     marginTop: 25,
     marginBottom: 10
   },
   passwordInput: {
+    flex: 1,
     height: 50,
     width: "75%",
     fontSize: 22,
@@ -43,6 +53,7 @@ export const loginStyles = StyleSheet.create({
     borderRadius: 25,
   },
   loginButton: {
+    flex: 1,
     height: 50,
     width: 100,
     marginTop: 25,
@@ -51,10 +62,11 @@ export const loginStyles = StyleSheet.create({
     borderColor: "green"
   },
   loginButtonText: {
+    flex: 1,
     textAlign: "center",
-    marginTop: "12%"
   },
   goToRegisterBtn: {
+    flex: 1,
     height: 30,
     width: 120,
     marginTop: 10,
@@ -63,13 +75,13 @@ export const loginStyles = StyleSheet.create({
     borderColor: "green"
   },
   goToRegisterBtnText: {
+    flex: 1,
     padding: 5,
     textAlign: "center",
     color: "green"
   },
   forgotLogin: {
-    position: "absolute",
-    bottom: "10%",
+    flex: 1,
     height: 20,
     width: "auto",
   }
