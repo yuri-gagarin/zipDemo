@@ -4,8 +4,8 @@ import { Dimensions, StyleSheet } from "react-native";
 export const DEFAULT_LOGO_HEIGHT = 150;
 export const MIN_LOGO_HEIGHT = 50;
 
-const SCREEN_HEIGHT = Dimensions.get('window').height;
-const SCREEN_WIDTH = Dimensions.get('window').width;
+export const SCREEN_HEIGHT = Dimensions.get('window').height;
+export const SCREEN_WIDTH = Dimensions.get('window').width;
 
 console.info(`Height is ${SCREEN_HEIGHT}, Width is ${SCREEN_WIDTH}`)
 // LoginComponent styling //

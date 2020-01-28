@@ -3,17 +3,19 @@ import {
   Animated,
   Image, 
   Keyboard,
-  ScrollView,
   Text,
   TextInput, 
   TouchableOpacity, 
+  UIManager,
   View 
   } from "react-native";
 // additional Components //
 import PasswordToggle from "./PasswordToggle";
 // Style imports and images //
-import { registrationStyles } from "./styles/styles";
+import { registrationStyles, SCREEN_HEIGHT, SCREEN_WIDTH } from "./styles/styles";
 import { mainLogoImg } from "../../images/imageIndex";
+
+const { State: TextInputState } = TextInput;
 
 const RegistrationComponent = (props) => {
 
@@ -25,31 +27,42 @@ const RegistrationComponent = (props) => {
     passwordHidden: true
   };
   let keyboardWillShowEvent, keyboardWillHideEvent;
-  let keyboardHeight = new Animated.Value(0);
 
   const [registrationState, updateRegistrationState] = useState(initialState);
+  const [keyboardShift, setKeyboardShift] = useState(new Animated.Value(0));
 
-  const keyboardWillShow = (e) => {
-    Animated.parallel([
-      Animated.spring(keyboardHeight, {
-        toValue: e.endCoordinates.height + 500
-      })
-    ]).start();
+  const keyboardDidShow = (e) => {
+    const keyboardHeight = e.endCoordinates.height;
+    const currentlyFocusedInput = TextInputState.currentlyFocusedField();
+
+    UIManager.measure(currentlyFocusedInput, (originX, originY, width, height, pageX, pageY) => {
+      const fieldHeight = height;
+      const fieldTop = pageY;
+      const gap = (SCREEN_HEIGHT - keyboardHeight) - (fieldHeight + fieldTop);
+      if (gap >= 0) {
+        return;
+      }
+      Animated.timing(keyboardShift, {
+        toValue: gap - 10,
+        duration: 500,
+        useNativeDriver: true
+      }).start();
+    });
   };
-  const keyboardWilHide = (e) => {
-    Animated.parallel([
-      Animated.spring(keyboardHeight, {
-        toValue: 0
-      })
-    ]).start();
+  const keyboardDidHide = (e) => {
+    Animated.timing(keyboardShift, {
+      toValue: 0,
+      duration: 500,
+      useNativeDriver: true
+    }).start();
   };
 
   useEffect(() => {
-    //console.log("mounting component and set properties");
-    keyboardWillShowEvent = Keyboard.addListener("keyboardDidShow", keyboardWillShow);
-    keyboardWillHideEvent = Keyboard.addListener("keyboardDidHide", keyboardWilHide);
+    // listeners for keyboard //
+    keyboardWillShowEvent = Keyboard.addListener("keyboardDidShow", keyboardDidShow);
+    keyboardWillHideEvent = Keyboard.addListener("keyboardDidHide", keyboardDidHide);
     return function cleanupComponent() {
-      //console.log("unmounted and cleaning up");
+      // cleanup listeners for keyboard //
       keyboardWillShowEvent.remove();
       keyboardWillHideEvent.remove();
     }
@@ -84,7 +97,7 @@ const RegistrationComponent = (props) => {
 
   return (
     <Animated.ScrollView 
-      style={{paddingBottom: keyboardHeight}}
+      style={{ transform: [ {translateY: keyboardShift} ] }}
       contentContainerStyle={registrationStyles.registrationView}
       bounces={false}
     >
